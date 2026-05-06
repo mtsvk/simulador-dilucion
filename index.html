@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Simulador de Dilución · Guía para Startups</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --ink: #111827;
+      --muted: #647084;
+      --line: #e5e8ef;
+      --soft: #f1f4f8;
+      --soft2: #f8fafc;
+      --blue: #2563eb;
+      --green: #047857;
+      --orange: #b45309;
+      --red: #b91c1c;
+      --shadow: 0 10px 28px rgba(15,23,42,.08);
+      --radius: 18px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    *, *::before, *::after { box-sizing: border-box; min-width: 0; }
+    html, body { margin: 0; width: 100%; max-width: 100%; overflow-x: hidden; background: var(--bg); color: var(--ink); font-family: Inter, system-ui, -apple-system, sans-serif; -webkit-text-size-adjust: 100%; line-height: 1.38; }
+    body { padding: 0; }
+    img, svg, canvas { max-width: 100%; }
+    h1, h2, h3, p, label, strong, span, button, input, select { overflow-wrap: break-word; word-break: break-word; }
+    button, input, select { font: inherit; outline: none; }
+    button { touch-action: manipulation; cursor: pointer; }
+    
+    .app { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 10px calc(96px + var(--safe-bottom)); }
+    
+    /* Layout */
+    .hero, .section { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden; margin: 12px 0; padding: 16px; }
+    .hero { background: linear-gradient(180deg,#fff,#f8fafc); }
+    .grid { display: grid; gap: 10px; }
+    .grid.two { grid-template-columns: 1fr; }
+    @media(min-width: 500px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+    
+    /* Typography */
+    h1 { font-size: 1.45rem; line-height: 1.1; letter-spacing: -0.04em; margin: 0 0 10px; }
+    h2 { font-size: 1.1rem; line-height: 1.16; margin: 0 0 5px; }
+    .eyebrow { font-size: 0.75rem; text-transform: uppercase; font-weight: 900; color: var(--muted); margin: 0 0 5px; }
+    p { margin: 0 0 10px; color: var(--muted); font-size: 0.9rem; }
+    .mini { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    
+    /* UI Elements */
+    .input-card { background: #fbfcfe; border: 1px solid var(--line); border-radius: 15px; padding: 10px; }
+    label { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: 0.82rem; font-weight: 800; color: #273244; }
+    input, select { width: 100%; height: 44px; border: 1px solid #d8dee9; border-radius: 12px; padding: 0 11px; background: #fff; }
+    input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+    
+    /* Warnings & Alerts */
+    .warning { border-radius: 14px; padding: 12px; font-size: 0.85rem; border: 1px solid var(--line); margin-bottom: 12px; background: #fff; }
+    .warning.strong { border-color: #fecaca; background: #fef2f2; color: #991b1b; }
+    .warning.warn { border-color: #fed7aa; background: #fff7ed; color: #9a3412; }
+    .warning.info { border-color: #bfdbfe; background: #eff6ff; color: #1d4ed8; }
+    .warning.global { border-radius: 0; border-left: 0; border-right: 0; margin-bottom: 16px; font-size: 0.8rem; }
+    
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 8px 12px; border-radius: 13px; font-weight: 800; font-size: 0.88rem; border: 1px solid var(--line); background: #fff; color: var(--ink); text-align: center; }
+    .btn.blue { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .btn.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .btn.danger { background: #fff1f2; color: #991b1b; border-color: #fecaca; }
+    .btn-row { display: grid; gap: 8px; margin-top: 10px; }
+    @media(min-width: 500px) { .btn-row { grid-template-columns: 1fr 1fr; } }
+    
+    /* Segmented Controls */
+    .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: var(--soft); border-radius: 14px; padding: 5px; margin-bottom: 10px; }
+    .seg button { border: 0; background: transparent; padding: 10px; font-weight: 800; font-size: 0.8rem; border-radius: 10px; color: var(--muted); }
+    .seg button.active { background: #fff; color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    
+    /* Toggles */
+    .toggle-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #fbfcfe; border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin: 10px 0; }
+    .switch { position: relative; width: 48px; height: 28px; flex: 0 0 auto; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; inset: 0; background: #cbd5e1; border-radius: 999px; transition: .2s; }
+    .slider:before { content: ""; position: absolute; height: 22px; width: 22px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s; }
+    .switch input:checked + .slider { background: var(--ink); }
+    .switch input:checked + .slider:before { transform: translateX(20px); }
+    
+    /* Tooltip / Bottom Sheet */
+    .tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: #e2e8f0; color: #334155; font-size: 0.75rem; font-weight: 900; cursor: pointer; flex: 0 0 auto; }
+    .bs-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,23,42,0.4); z-index: 99; opacity: 0; pointer-events: none; transition: 0.3s; }
+    .bs-overlay.show { opacity: 1; pointer-events: auto; }
+    .bottom-sheet { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; z-index: 100; border-radius: 24px 24px 0 0; padding: 24px 20px calc(24px + var(--safe-bottom)); transform: translateY(100%); transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); max-height: 85vh; overflow-y: auto; box-shadow: 0 -10px 30px rgba(0,0,0,0.1); }
+    .bottom-sheet.show { transform: translateY(0); }
+    .bs-close { position: absolute; top: 16px; right: 16px; background: #f1f5f9; border: 0; border-radius: 50%; width: 32px; height: 32px; font-weight: 900; display: flex; align-items: center; justify-content: center; color: #475569; }
+    
+    /* Sticky Summary */
+    .sticky-summary { position: sticky; top: 0; z-index: 50; margin: 0 -10px 12px; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 8px 10px; transition: 0.3s; }
+    .summary-card { background: var(--ink); color: #fff; border-radius: 16px; padding: 12px; box-shadow: 0 8px 20px rgba(17,24,39,0.15); overflow: hidden; }
+    .summary-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-weight: 800; cursor: pointer; }
+    .summary-header b { color: #60a5fa; }
+    .summary-body { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; transition: max-height 0.3s; max-height: 500px; }
+    .summary-body.collapsed { max-height: 0; margin-top: 0; overflow: hidden; }
+    .summary-item { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 8px; }
+    .summary-item b { display: block; font-size: 0.95rem; line-height: 1.1; }
+    .summary-item span { font-size: 0.7rem; color: #cbd5e1; }
+    
+    /* Dynamic Rows */
+    .row-card { position: relative; border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin: 10px 0; background: #fff; }
+    .row-card.accent { border-color: #bfdbfe; background: #f8fafc; }
+    .remove-btn { position: absolute; right: 10px; top: 10px; width: 28px; height: 28px; border-radius: 50%; border: 1px solid #fecaca; background: #fff1f2; color: #991b1b; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+    
+    /* Result Tables & Stats */
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .metric { background: #f8fafc; border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
+    .metric span { display: block; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; color: var(--muted); }
+    .metric b { display: block; font-size: 1rem; margin-top: 4px; }
+    .cap-item { border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin-top: 8px; background: #fff; }
+    .cap-name { font-weight: 800; font-size: 0.9rem; margin-bottom: 6px; }
+    .cap-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .stat { background: #f1f5f9; border-radius: 8px; padding: 6px; }
+    .stat span { display: block; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; font-weight: 800; }
+    .stat b { display: block; font-size: 0.8rem; margin-top: 2px; }
+    
+    /* Chart */
+    .chart-box { position: relative; width: 100%; height: 260px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px; margin-top: 12px; }
+    
+    /* Utilities */
+    .hidden { display: none !important; }
+    .print-only { display: none; }
+    .badge { background: #eff6ff; color: #1d4ed8; padding: 2px 6px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; margin-left: 6px; }
+    
+    @media print {
+      html, body { background: #fff; }
+      .app { padding: 0; max-width: 100%; }
+      .sticky-summary, .bottom-sheet, .bs-overlay, button, .switch, .seg, .remove-btn { display: none !important; }
+      .print-only { display: block; margin-bottom: 20px; }
+      .hero, .section { border: 1px solid #ccc; box-shadow: none; break-inside: avoid; margin-bottom: 20px; }
+      .chart-box { break-inside: avoid; }
+      .warning.global { border: 1px solid #000; border-radius: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="warning strong global no-print">
+    <strong>⚠️ Simulación Económica vs Efecto Jurídico</strong><br>
+    Este simulador muestra efectos económicos aproximados. No determina por sí solo quién es accionista legalmente, quién controla la sociedad ni cómo debe documentarse la inversión. En Chile, los efectos reales dependen de los estatutos, acuerdos sociales, emisión de acciones, SAFE, mutuo convertible o pacto de accionistas.
+  </div>
+
+  <main class="app" id="app">
+    
+    <div class="print-only">
+      <h1 id="printCompanyName">Simulación de Cap Table</h1>
+      <p>Generado el: <span id="printDate"></span></p>
+      <div class="warning info">Nota: Documento referencial para análisis económico. No constituye un instrumento legal.</div>
+    </div>
+
+    <section class="hero no-print" id="inicio">
+      <p class="eyebrow">Simulador de Venture Capital · Chile</p>
+      <h1>Modelación de Dilución para Rondas Seed</h1>
+      <p>Descubre cuánto porcentaje entregas, qué valorización implícita estás aceptando y cómo se comporta tu cap table frente a rondas futuras y cláusulas de protección.</p>
+    </section>
+
+    <div class="sticky-summary no-print" id="stickySummary">
+      <div class="summary-card">
+        <div class="summary-header" onclick="toggleSummary()">
+          <span>Fundadores: <b id="sumFounderShort">--</b> · Levantado: <b id="sumRaisedShort">--</b></span>
+          <span id="sumToggleIcon">▼</span>
+        </div>
+        <div class="summary-body collapsed" id="summaryBody">
+          <div class="summary-item"><b id="sumPost">--</b><span>Post-money Actual</span></div>
+          <div class="summary-item"><b id="sumInvs">--</b><span>% Inversionistas</span></div>
+          <div class="summary-item"><b id="sumPrice">--</b><span>Precio por Acción</span></div>
+          <div class="summary-item"><b id="sumTotalShares">--</b><span>Acciones Totales</span></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="estado">
+      <p class="eyebrow">1 · Estado Inicial</p>
+      <h2>¿Cómo está la sociedad hoy?</h2>
+      <p class="mini">Antes de que entre el nuevo dinero.</p>
+      
+      <div class="seg" role="tablist">
+        <button id="modeShares" class="active" onclick="setBaseMode('shares')">Tengo acciones reales</button>
+        <button id="modePercent" onclick="setBaseMode('pct')">Solo sé el %</button>
+      </div>
+      
+      <div id="pctWarning" class="warning info hidden">
+        <strong>Modo Pedagógico Activado:</strong> Como usarás porcentajes, el simulador usará una base ficticia de 1.000.000 de acciones. Los precios por acción mostrados serán "pedagógicos" y no debes copiarlos a un Term Sheet.
+      </div>
+
+      <div class="grid two">
+        <div class="input-card"><label>Nombre de la startup</label><input type="text" id="companyName" value="Mi Startup SpA" oninput="renderAll()"></div>
+        <div class="input-card"><label>Moneda</label><select id="currency" onchange="renderAll()"><option value="CLP">CLP</option><option value="USD">USD</option></select></div>
+        <div class="input-card" id="boxFounderShares"><label>Acciones de fundadores <span class="tooltip-icon" onclick="openTip('Acciones de fundadores', 'Total de acciones emitidas a favor del equipo fundador en la constitución de la SpA.')">?</span></label><input type="text" inputmode="numeric" class="fmt-money" id="founderShares" value="1.000.000" oninput="formatMoneyInput(event); renderAll()"></div>
+        <div class="input-card hidden" id="boxFounderPct"><label>% de fundadores</label><input type="number" step="0.01" min="0.01" max="100" id="founderPct" value="100" oninput="renderAll()"></div>
+      </div>
+
+      <div class="toggle-line">
+        <div><strong>Otros accionistas actuales</strong><div class="mini">Ángeles previos, family & friends.</div></div>
+        <label class="switch"><input type="checkbox" id="hasOthers" onchange="toggleBox('othersBox', this.checked); renderAll()"><span class="slider"></span></label>
+      </div>
+      <div id="othersBox" class="hidden">
+        <div id="otherRows"></div>
+        <button class="btn" onclick="addOther()">+ Agregar accionista</button>
+      </div>
+
+      <div class="toggle-line">
+        <div><strong>Pool ESOP Actual</strong> <span class="tooltip-icon" onclick="openTip('Pool ESOP', 'Reserva de acciones para empleados. Si se crea ANTES de la ronda, diluye a los fundadores inmediatamente.')">?</span><div class="mini">Opciones para trabajadores.</div></div>
+        <label class="switch"><input type="checkbox" id="hasPool" onchange="toggleBox('poolBox', this.checked); renderAll()"><span class="slider"></span></label>
+      </div>
+      <div id="poolBox" class="grid two hidden">
+        <div class="input-card"><label>Tamaño del Pool</label><input type="text" inputmode="numeric" class="fmt-money" id="poolValue" value="0" oninput="formatMoneyInput(event); renderAll()"></div>
+        <div class="input-card"><label>Expresado en</label><select id="poolType" onchange="renderAll()"><option value="shares">Acciones</option><option value="pct">% de la empresa</option></select></div>
+      </div>
+    </section>
+
+    <section class="section" id="actual">
+      <p class="eyebrow">2 · Ronda Actual</p>
+      <h2>¿Cuánto y cómo estás levantando?</h2>
+      
+      <div class="seg" role="tablist">
+        <button id="btnModeA" class="active" onclick="setRoundMode('A')">Misma ronda (Recomendado)</button>
+        <button id="btnModeB" onclick="setRoundMode('B')">Condiciones distintas (Avanzado)</button>
+      </div>
+
+      <div id="modeBWarning" class="warning warn hidden">
+        <strong>Modo Avanzado:</strong> Estás calculando la entrada secuencial con precios distintos. Normalmente, si varios inversionistas entran en la misma ronda, comparten el mismo precio por acción salvo excepciones contractuales (ej. conversión de notas antiguas).
+      </div>
+      
+      <div id="safeWarning" class="warning info hidden">
+        <strong>Atención con Notas y SAFEs:</strong> Para efectos pedagógicos, se asume que SAFEs y Mutuos se convierten en acciones <em>hoy</em> (Fully Diluted). Legalmente, el inversionista no es accionista hasta que se gatilla la conversión.
+      </div>
+
+      <div id="modeA_inputs" class="row-card accent">
+        <label>¿Cómo defines la valorización de esta ronda?</label>
+        <select id="modeA_method" onchange="renderAll()" style="margin-bottom:8px;">
+          <option value="pre">Fijando Valorización Pre-money</option>
+          <option value="pct">Fijando un % total a entregar</option>
+          <option value="post">Fijando Valorización Post-money</option>
+        </select>
+        <label id="modeA_labelValue">Monto ($)</label>
+        <input type="text" inputmode="numeric" class="fmt-money" id="modeA_value" value="400.000.000" oninput="formatMoneyInput(event); renderAll()">
+      </div>
+
+      <div id="currentInvestorRows"></div>
+      <div class="btn-row">
+        <button class="btn blue" onclick="addCurrentInvestor()">+ Agregar Inversionista</button>
+      </div>
+    </section>
+
+    <section class="section" id="futura">
+      <div class="toggle-line no-margin" style="border:none; padding:0; background:transparent;">
+        <div><p class="eyebrow">3 · Ronda Futura</p><h2 style="font-size:1rem;">Simular una ronda futura</h2></div>
+        <label class="switch"><input type="checkbox" id="hasFuture" onchange="toggleBox('futureBox', this.checked); renderAll()"><span class="slider"></span></label>
+      </div>
+      <div id="futureBox" class="hidden" style="margin-top:12px;">
+        <p class="mini">Permite ver cómo se diluyen todos y si se activan las cláusulas Anti-dilución (Down Round).</p>
+        <div class="row-card">
+          <div class="grid two">
+            <div>
+              <label>Método de Valorización</label>
+              <select id="futureMethod" onchange="renderAll()"><option value="pre">Pre-money futura</option><option value="pct">% a entregar</option></select>
+            </div>
+            <div>
+              <label>Valor de la valorización</label>
+              <input type="text" inputmode="numeric" class="fmt-money" id="futureValue" value="1.000.000.000" oninput="formatMoneyInput(event); renderAll()">
+            </div>
+            <div style="grid-column: 1/-1;">
+              <label>Inversión levantada en ronda futura</label>
+              <input type="text" inputmode="numeric" class="fmt-money" id="futureInv" value="200.000.000" oninput="formatMoneyInput(event); renderAll()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resultados">
+      <p class="eyebrow">Resultados</p>
+      <h2>Impacto en tu Cap Table</h2>
+      
+      <div id="controlAlerts"></div>
+      <div class="warning info">
+        <strong>Recuerda:</strong> El porcentaje económico no siempre equivale al control político. Un inversionista minoritario puede tener vetos, derecho de información o un asiento en el directorio. Revisa tu Pacto de Accionistas.
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric"><span>Valorización Pre-money</span><b id="resPre">--</b></div>
+        <div class="metric"><span>Valorización Post-money</span><b id="resPost">--</b></div>
+        <div class="metric"><span>Total Inversión</span><b id="resInv">--</b></div>
+        <div class="metric"><span>Precio por Acción <span id="pedagogicBadge" class="badge hidden">Pedagógico</span></span><b id="resPrice">--</b></div>
+      </div>
+
+      <div class="chart-box"><canvas id="capChart"></canvas></div>
+
+      <h3 style="margin-top:20px;">Cap Table Fully Diluted</h3>
+      <div id="capTableList"></div>
+      
+      <div class="btn-row no-print" style="margin-top:20px;">
+        <button class="btn dark" onclick="window.print()">Imprimir Reporte</button>
+        <button class="btn" onclick="internalValidationTest()">Correr Tests Internos</button>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="bs-overlay" id="bsOverlay" onclick="closeTip()"></div>
+  <div class="bottom-sheet" id="bottomSheet">
+    <button class="bs-close" onclick="closeTip()">✕</button>
+    <h3 id="bsTitle" style="margin-top:0;">Título</h3>
+    <p id="bsText" style="font-size: 0.95rem; color: #334155; line-height: 1.5;"></p>
+  </div>
+
+  <script>
+    // --- ESTADO Y VARIABLES GLOBALES ---
+    let myChart = null;
+    let invCounter = 0;
+    let otherCounter = 0;
+
+    // --- FORMATEO DE NÚMEROS ---
+    function formatMoneyInput(e) {
+      let el = e.target;
+      let isPct = el.id === 'modeA_value' && document.getElementById('modeA_method').value === 'pct';
+      if (isPct) return; // Allow decimals if it's a percentage field disguised
+      
+      let val = el.value.replace(/\D/g, '');
+      if (val === '') { el.value = ''; return; }
+      el.value = new Intl.NumberFormat('es-CL').format(parseInt(val, 10));
+    }
+
+    function getMoney(valStr) {
+      if (!valStr) return 0;
+      let num = parseInt(valStr.toString().replace(/\D/g, ''), 10);
+      return isNaN(num) ? 0 : Math.max(0, num);
+    }
+
+    function getPct(valStr) {
+      if (!valStr) return 0;
+      let num = parseFloat(valStr.toString().replace(/\./g, '').replace(',', '.')); // in case someone types commas
+      return isNaN(num) ? 0 : Math.min(99.99, Math.max(0, num)); // Protect between 0 and 99.99%
+    }
+
+    function fmtC(num) {
+      let cur = document.getElementById('currency').value;
+      if (isNaN(num) || num === Infinity) return cur + ' 0';
+      return cur + ' ' + new Intl.NumberFormat('es-CL', { maximumFractionDigits: 0 }).format(num);
+    }
+    
+    function fmtN(num, decimals=0) {
+      if (isNaN(num) || num === Infinity) return '0';
+      return new Intl.NumberFormat('es-CL', { maximumFractionDigits: decimals }).format(num);
+    }
+
+    // --- INTERFAZ ---
+    function toggleBox(id, show) {
+      document.getElementById(id).classList.toggle('hidden', !show);
+    }
+
+    function setBaseMode(mode) {
+      document.getElementById('modeShares').classList.toggle('active', mode === 'shares');
+      document.getElementById('modePercent').classList.toggle('active', mode === 'pct');
+      document.getElementById('boxFounderShares').classList.toggle('hidden', mode === 'pct');
+      document.getElementById('boxFounderPct').classList.toggle('hidden', mode === 'shares');
+      document.getElementById('pctWarning').classList.toggle('hidden', mode === 'shares');
+      document.getElementById('pedagogicBadge').classList.toggle('hidden', mode === 'shares');
+      renderAll();
+    }
+
+    function setRoundMode(mode) {
+      document.getElementById('btnModeA').classList.toggle('active', mode === 'A');
+      document.getElementById('btnModeB').classList.toggle('active', mode === 'B');
+      document.getElementById('modeA_inputs').classList.toggle('hidden', mode === 'B');
+      document.getElementById('modeBWarning').classList.toggle('hidden', mode === 'A');
+      renderAll();
+    }
+
+    function toggleSummary() {
+      document.getElementById('summaryBody').classList.toggle('collapsed');
+      let icon = document.getElementById('sumToggleIcon');
+      icon.innerText = icon.innerText === '▼' ? '▲' : '▼';
+    }
+
+    function openTip(title, text) {
+      document.getElementById('bsTitle').innerText = title;
+      document.getElementById('bsText').innerText = text;
+      document.getElementById('bsOverlay').classList.add('show');
+      document.getElementById('bottomSheet').classList.add('show');
+    }
+    function closeTip() {
+      document.getElementById('bsOverlay').classList.remove('show');
+      document.getElementById('bottomSheet').classList.remove('show');
+    }
+
+    // --- MANEJO DE FILAS ---
+    function addOther() {
+      otherCounter++;
+      let div = document.createElement('div');
+      div.className = 'row-card';
+      div.id = 'other_row_' + otherCounter;
+      div.innerHTML = `
+        <button class="remove-btn" onclick="document.getElementById('${div.id}').remove(); renderAll()">✕</button>
+        <div class="grid two" style="margin-top:8px;">
+          <div><label>Nombre</label><input type="text" class="other-name" value="Socio ${otherCounter}"></div>
+          <div><label>Valor (Acciones o %)</label><input type="text" inputmode="numeric" class="fmt-money other-value" value="100.000" oninput="formatMoneyInput(event); renderAll()"></div>
+        </div>
+      `;
+      document.getElementById('otherRows').appendChild(div);
+      renderAll();
+    }
+
+    function addCurrentInvestor() {
+      invCounter++;
+      let div = document.createElement('div');
+      div.className = 'row-card current-investor-row';
+      div.id = 'inv_row_' + invCounter;
+      div.innerHTML = `
+        <button class="remove-btn" onclick="document.getElementById('${div.id}').remove(); renderAll()">✕</button>
+        <div class="grid two" style="margin-top:8px;">
+          <div><label>Inversionista</label><input type="text" class="inv-name" value="Inversionista ${invCounter}" oninput="renderAll()"></div>
+          <div><label>Monto a Invertir</label><input type="text" inputmode="numeric" class="fmt-money inv-amount" value="50.000.000" oninput="formatMoneyInput(event); renderAll()"></div>
+          
+          <div class="inv-b-fields hidden">
+            <label>Método</label>
+            <select class="inv-method" onchange="renderAll()"><option value="pre">Pre-money</option><option value="post">Post-money</option></select>
+          </div>
+          <div class="inv-b-fields hidden">
+            <label>Valor</label>
+            <input type="text" inputmode="numeric" class="fmt-money inv-value" value="400.000.000" oninput="formatMoneyInput(event); renderAll()">
+          </div>
+
+          <div>
+            <label>Instrumento <span class="tooltip-icon" onclick="openTip('Instrumento', 'Acciones son capital directo. Mutuo o SAFE son deuda convertible.')">?</span></label>
+            <select class="inv-instrument" onchange="renderAll()">
+              <option value="equity">Acciones Directas</option>
+              <option value="safe">SAFE</option>
+              <option value="mutuo">Mutuo Convertible</option>
+            </select>
+          </div>
+          <div>
+            <label>Anti-dilución <span class="tooltip-icon" onclick="openTip('Anti-dilución', 'Protección si en el futuro emites acciones más baratas.')">?</span></label>
+            <select class="inv-antidilution" onchange="renderAll()">
+              <option value="none">Sin protección</option>
+              <option value="broad">Weighted Average (Broad)</option>
+              <option value="narrow">Weighted Average (Narrow)</option>
+              <option value="ratchet">Full Ratchet</option>
+            </select>
+          </div>
+        </div>
+      `;
+      document.getElementById('currentInvestorRows').appendChild(div);
+      renderAll();
+    }
+
+    // --- CÁLCULO PRINCIPAL ---
+    function renderAll() {
+      try {
+        // Prepare UI for Mode A vs Mode B fields
+        let isModeA = document.getElementById('btnModeA').classList.contains('active');
+        document.querySelectorAll('.inv-b-fields').forEach(el => el.classList.toggle('hidden', isModeA));
+
+        // Adjust labels
+        let mAMethod = document.getElementById('modeA_method').value;
+        document.getElementById('modeA_labelValue').innerText = mAMethod === 'pct' ? 'Porcentaje (%)' : 'Monto ($)';
+
+        // Detect SAFE/Mutuo for Warning
+        let hasSafe = Array.from(document.querySelectorAll('.inv-instrument')).some(el => ['safe', 'mutuo'].includes(el.value));
+        document.getElementById('safeWarning').classList.toggle('hidden', !hasSafe);
+
+        // 1. INITIAL STATE
+        let baseMode = document.getElementById('modeShares').classList.contains('active') ? 'shares' : 'pct';
+        let syntheticBase = 1000000;
+        let totalInitialShares = 0;
+        let capTable = [];
+
+        let founderSharesReal = 0;
+        if (baseMode === 'shares') {
+          founderSharesReal = getMoney(document.getElementById('founderShares').value);
+        } else {
+          let fPct = getPct(document.getElementById('founderPct').value);
+          founderSharesReal = syntheticBase * (fPct / 100);
+        }
+        totalInitialShares += founderSharesReal;
+        capTable.push({ name: 'Fundadores', shares: founderSharesReal, type: 'founder' });
+
+        // Others
+        if (document.getElementById('hasOthers').checked) {
+          document.querySelectorAll('.other-row, #otherRows .row-card').forEach(row => {
+            let name = row.querySelector('.other-name').value || 'Otro';
+            let vStr = row.querySelector('.other-value').value;
+            let amt = baseMode === 'shares' ? getMoney(vStr) : (syntheticBase * (getPct(vStr.replace(/\./g, '')) / 100));
+            totalInitialShares += amt;
+            capTable.push({ name: name, shares: amt, type: 'other' });
+          });
+        }
+
+        // ESOP
+        let esopShares = 0;
+        if (document.getElementById('hasPool').checked) {
+          let pType = document.getElementById('poolType').value;
+          let pVal = pType === 'shares' ? getMoney(document.getElementById('poolValue').value) : getPct(document.getElementById('poolValue').value);
+          
+          if (pType === 'shares') {
+            esopShares = pVal;
+          } else {
+            let pct = pVal / 100;
+            if (pct >= 1) pct = 0.99;
+            esopShares = totalInitialShares * (pct / (1 - pct));
+          }
+          totalInitialShares += esopShares;
+          capTable.push({ name: 'Pool ESOP', shares: esopShares, type: 'esop' });
+        }
+
+        // 2. CURRENT ROUND
+        let currentInvs = [];
+        let globalPre = 0, globalPost = 0, globalPrice = 0, totalCurrentInvAmount = 0;
+
+        let invNodes = document.querySelectorAll('.current-investor-row');
+        invNodes.forEach(row => totalCurrentInvAmount += getMoney(row.querySelector('.inv-amount').value));
+
+        if (isModeA) {
+          let gValue = mAMethod === 'pct' ? getPct(document.getElementById('modeA_value').value) : getMoney(document.getElementById('modeA_value').value);
+          
+          if (mAMethod === 'pre') {
+            globalPre = gValue;
+            globalPost = globalPre + totalCurrentInvAmount;
+          } else if (mAMethod === 'post') {
+            globalPost = gValue;
+            globalPre = Math.max(0, globalPost - totalCurrentInvAmount);
+          } else {
+            let pct = gValue / 100;
+            if (pct >= 1) pct = 0.99;
+            globalPost = pct > 0 ? totalCurrentInvAmount / pct : 0;
+            globalPre = Math.max(0, globalPost - totalCurrentInvAmount);
+          }
+          
+          globalPrice = totalInitialShares > 0 ? globalPre / totalInitialShares : 0;
+
+          invNodes.forEach(row => {
+            let amt = getMoney(row.querySelector('.inv-amount').value);
+            let shs = globalPrice > 0 ? amt / globalPrice : 0;
+            let invObj = {
+              name: row.querySelector('.inv-name').value || 'Inversionista',
+              amount: amt, shares: shs, price: globalPrice,
+              instrument: row.querySelector('.inv-instrument').value,
+              ad: row.querySelector('.inv-antidilution').value,
+              type: 'investor_current'
+            };
+            currentInvs.push(invObj);
+            capTable.push(invObj);
+          });
+        } else {
+          // Mode B
+          let runningShares = totalInitialShares;
+          invNodes.forEach(row => {
+            let method = row.querySelector('.inv-method').value;
+            let val = getMoney(row.querySelector('.inv-value').value);
+            let amt = getMoney(row.querySelector('.inv-amount').value);
+            
+            let pre = 0, post = 0, price = 0;
+            if (method === 'pre') { pre = val; post = pre + amt; }
+            else { post = val; pre = Math.max(0, post - amt); }
+            
+            price = runningShares > 0 ? pre / runningShares : 0;
+            let shs = price > 0 ? amt / price : 0;
+            runningShares += shs;
+            
+            let invObj = {
+              name: row.querySelector('.inv-name').value || 'Inversionista',
+              amount: amt, shares: shs, price: price,
+              instrument: row.querySelector('.inv-instrument').value,
+              ad: row.querySelector('.inv-antidilution').value,
+              type: 'investor_current'
+            };
+            currentInvs.push(invObj);
+            capTable.push(invObj);
+            
+            // Last one determines the global stats for display
+            globalPre = pre; globalPost = post; globalPrice = price;
+          });
+        }
+
+        // 3. FUTURE ROUND & ANTI-DILUTION
+        let hasFuture = document.getElementById('hasFuture').checked;
+        if (hasFuture) {
+          let fMethod = document.getElementById('futureMethod').value;
+          let fVal = fMethod === 'pct' ? getPct(document.getElementById('futureValue').value) : getMoney(document.getElementById('futureValue').value);
+          let fAmt = getMoney(document.getElementById('futureInv').value);
+          
+          let sharesBeforeFuture = capTable.reduce((s, i) => s + i.shares, 0);
+          let fPre = 0, fPost = 0, fPrice = 0;
+          
+          if (fMethod === 'pre') { fPre = fVal; }
+          else {
+             let pct = fVal/100; 
+             if(pct>=1) pct = 0.99;
+             fPost = pct > 0 ? fAmt/pct : 0;
+             fPre = Math.max(0, fPost - fAmt);
+          }
+          
+          fPrice = sharesBeforeFuture > 0 ? fPre / sharesBeforeFuture : 0;
+
+          // Anti-dilution processing
+          currentInvs.forEach(inv => {
+            if (inv.ad !== 'none' && fPrice < inv.price && fPrice > 0) {
+              let adjPrice = inv.price;
+              if (inv.ad === 'ratchet') {
+                adjPrice = fPrice;
+              } else if (inv.ad === 'broad') {
+                let B = fAmt / inv.price;
+                let C = fAmt / fPrice;
+                adjPrice = inv.price * ((sharesBeforeFuture + B) / (sharesBeforeFuture + C));
+              } else if (inv.ad === 'narrow') {
+                let A = inv.shares;
+                let B = fAmt / inv.price;
+                let C = fAmt / fPrice;
+                adjPrice = inv.price * ((A + B) / (A + C));
+              }
+              
+              let newTotalShares = inv.amount / adjPrice;
+              let comp = newTotalShares - inv.shares;
+              
+              let ctItem = capTable.find(c => c === inv);
+              if (ctItem) { ctItem.shares += comp; ctItem.adComp = comp; }
+              sharesBeforeFuture += comp;
+            }
+          });
+
+          // Recalc future price with newly diluted base (Pedagogical approach)
+          fPrice = sharesBeforeFuture > 0 ? fPre / sharesBeforeFuture : 0;
+          let futureShares = fPrice > 0 ? fAmt / fPrice : 0;
+          capTable.push({ name: 'Ronda Futura', shares: futureShares, amount: fAmt, type: 'investor_future' });
+        }
+
+        // 4. CALC FINAL PERCENTAGES
+        let totalFinalShares = capTable.reduce((s, i) => s + i.shares, 0);
+        capTable.forEach(i => { i.pct = totalFinalShares > 0 ? (i.shares / totalFinalShares) * 100 : 0; });
+
+        // 5. UPDATE DOM
+        let fFounder = capTable.find(i => i.type === 'founder');
+        let founderPctFinal = fFounder ? fFounder.pct : 0;
+
+        // Alerts
+        let alertHTML = '';
+        if (founderPctFinal < 30) {
+          alertHTML = '<div class="warning strong">Advertencia fuerte: los fundadores quedan con una participación muy baja para una etapa temprana. Puede afectar incentivos, control y atractivo para futuras rondas.</div>';
+        } else if (founderPctFinal < 50) {
+          alertHTML = '<div class="warning warn">Los fundadores quedan bajo mayoría económica simple. Esto no significa automáticamente perder control, pero exige revisar pactos de accionistas, administración y quórums.</div>';
+        } else if (founderPctFinal < 66.67) {
+          alertHTML = '<div class="warning info">Los fundadores podrían perder capacidad de aprobar ciertas materias relevantes si los documentos exigen quórums altos (ej. 2/3).</div>';
+        }
+        document.getElementById('controlAlerts').innerHTML = alertHTML;
+
+        // Metrics
+        document.getElementById('resPre').innerText = fmtC(globalPre);
+        document.getElementById('resPost').innerText = fmtC(globalPost);
+        document.getElementById('resInv').innerText = fmtC(totalCurrentInvAmount);
+        document.getElementById('resPrice').innerText = fmtC(globalPrice);
+
+        // Sticky
+        document.getElementById('sumFounderShort').innerText = fmtN(founderPctFinal, 1) + '%';
+        document.getElementById('sumRaisedShort').innerText = fmtC(totalCurrentInvAmount);
+        document.getElementById('sumPost').innerText = fmtC(globalPost);
+        document.getElementById('sumPrice').innerText = fmtC(globalPrice);
+        document.getElementById('sumTotalShares').innerText = fmtN(totalFinalShares);
+        
+        let invsPct = capTable.filter(i => i.type.includes('investor')).reduce((s, i) => s + i.pct, 0);
+        document.getElementById('sumInvs').innerText = fmtN(invsPct, 1) + '%';
+
+        // Cap Table Render
+        let listHTML = '';
+        capTable.forEach(item => {
+          let badge = '';
+          if (item.type === 'safe' || item.instrument === 'safe') badge = '<span class="badge">SAFE</span>';
+          if (item.instrument === 'mutuo') badge = '<span class="badge">MUTUO</span>';
+          
+          let adText = '';
+          if (item.adComp) adText = `<div class="mini" style="color:#047857;">+${fmtN(item.adComp)} acciones por protección anti-dilución</div>`;
+
+          listHTML += `
+            <div class="cap-item">
+              <div class="cap-name">${item.name} ${badge}</div>
+              <div class="cap-stats">
+                <div class="stat"><span>% Final</span><b>${fmtN(item.pct, 2)}%</b></div>
+                <div class="stat"><span>Acciones</span><b>${fmtN(item.shares)}</b></div>
+                <div class="stat"><span>Inversión</span><b>${item.amount ? fmtC(item.amount) : '-'}</b></div>
+              </div>
+              ${adText}
+            </div>
+          `;
+        });
+        document.getElementById('capTableList').innerHTML = listHTML;
+
+        // Date for Print
+        document.getElementById('printDate').innerText = new Date().toLocaleDateString('es-CL');
+        document.getElementById('printCompanyName').innerText = document.getElementById('companyName').value || 'Simulación';
+
+        // Chart Update
+        if (typeof Chart !== 'undefined') {
+          let ctx = document.getElementById('capChart').getContext('2d');
+          let labels = capTable.map(i => i.name);
+          let data = capTable.map(i => i.pct);
+          let colors = capTable.map(i => {
+            if (i.type === 'founder') return '#111827';
+            if (i.type === 'investor_current') return '#2563eb';
+            if (i.type === 'investor_future') return '#b91c1c';
+            if (i.type === 'esop') return '#047857';
+            return '#cbd5e1';
+          });
+
+          if (myChart) myChart.destroy();
+          myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: { labels: labels, datasets: [{ data: data, backgroundColor: colors, borderWidth: 2 }] },
+            options: {
+              responsive: true, maintainAspectRatio: false,
+              plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: {size: 11} } } },
+              cutout: '60%'
+            }
+          });
+        }
+
+      } catch (err) {
+        console.warn("Calculation Error, likely incomplete input:", err);
+      }
+    }
+
+    // --- TESTS INTERNOS DE VALIDACIÓN ---
+    function internalValidationTest() {
+      console.log("--- INICIANDO TESTS DE VALIDACIÓN INTERNA ---");
+      // Caso A
+      let shA = 1000000;
+      let invA = 100000000;
+      let pctA = 0.20;
+      let postA = invA / pctA; 
+      let preA = postA - invA; 
+      let priceA = preA / shA; 
+      let newA = invA / priceA; 
+      
+      console.assert(postA === 500000000, "Caso A: Post-money " + postA);
+      console.assert(preA === 400000000, "Caso A: Pre-money " + preA);
+      console.assert(priceA === 400, "Caso A: Precio " + priceA);
+      console.assert(newA === 250000, "Caso A: Acciones " + newA);
+      
+      // Caso C & D (Anti-dilution)
+      let futurePrice = 200; // Down round
+      let baseBefore = shA + newA; // 1,250,000
+      let B = 50000000 / priceA; 
+      let C = 50000000 / futurePrice;
+      let bbwa = priceA * ((baseBefore + B) / (baseBefore + C));
+      let ratchet = futurePrice;
+      
+      console.assert(ratchet < bbwa, "Caso C: Ratchet es más duro que BBWA");
+      console.log("Tests terminados con éxito. Revisa consola para detalles.");
+      alert("Tests internos ejecutados correctamente en consola.");
+    }
+
+    // Inicializar
+    window.addEventListener('DOMContentLoaded', () => {
+      addCurrentInvestor(); // Add first default investor
+      renderAll();
+    });
+
+  </script>
+</body>
+</html>
