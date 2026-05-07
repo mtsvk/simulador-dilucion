@@ -1,0 +1,1492 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Mapa de Cláusulas Startup | Term Sheet y Pacto de Accionistas</title>
+  <meta name="description" content="Guía móvil para entender y negociar cláusulas de term sheet, SAFE, mutuo convertible y pacto de accionistas: pro fundador y pro inversionista." />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --ink: #020617;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --soft: #f1f5f9;
+      --black: #020617;
+      --investor-bg: #eef2ff;
+      --investor-ink: #3730a3;
+      --founder-bg: #ecfdf5;
+      --founder-ink: #065f46;
+      --neutral-bg: #f8fafc;
+      --neutral-ink: #334155;
+      --minority-bg: #fffbeb;
+      --minority-ink: #92400e;
+      --company-bg: #ecfeff;
+      --company-ink: #155e75;
+      --danger-bg: #fff1f2;
+      --danger-ink: #9f1239;
+      --warn-bg: #fffbeb;
+      --warn-ink: #78350f;
+      --shadow: 0 12px 32px rgba(15, 23, 42, .08);
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .shell {
+      width: min(100%, 860px);
+      margin: 0 auto;
+      padding: 16px 14px 88px;
+    }
+
+    .hero {
+      background: var(--black);
+      color: white;
+      border-radius: 28px;
+      padding: 22px 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,.18), rgba(255,255,255,0) 65%);
+      top: -90px;
+      right: -80px;
+      z-index: -1;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(27px, 8vw, 52px);
+      line-height: .96;
+      letter-spacing: -.055em;
+      font-weight: 950;
+    }
+
+    .hero p {
+      margin: 14px 0 0;
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.62;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 18px;
+      padding: 11px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 23px;
+      line-height: 1;
+      letter-spacing: -.03em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      margin: 14px -14px 0;
+      padding: 12px 14px;
+      background: rgba(248, 250, 252, .93);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .searchbox {
+      position: relative;
+    }
+
+    .searchbox input {
+      width: 100%;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 0 12px 0 42px;
+      background: white;
+      color: var(--ink);
+      outline: none;
+      font-weight: 720;
+      box-shadow: 0 1px 0 rgba(15,23,42,.02);
+    }
+
+    .searchbox input:focus {
+      border-color: #94a3b8;
+      box-shadow: 0 0 0 4px rgba(148, 163, 184, .18);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      pointer-events: none;
+    }
+
+    .chips {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: 10px 0 1px;
+      scrollbar-width: none;
+    }
+
+    .chips::-webkit-scrollbar { display: none; }
+
+    .chip {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: white;
+      color: #334155;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .chip.active {
+      color: white;
+      background: var(--black);
+      border-color: var(--black);
+    }
+
+    .grid {
+      display: grid;
+      gap: 13px;
+      margin-top: 14px;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .03);
+      padding: 15px;
+    }
+
+    .panel-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 11px;
+      color: #0f172a;
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .mini-row {
+      background: var(--soft);
+      border-radius: 15px;
+      padding: 12px;
+    }
+
+    .mini-row + .mini-row {
+      margin-top: 8px;
+    }
+
+    .mini-row strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .mini-row span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .notice {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid #fde68a;
+      background: var(--warn-bg);
+      border-radius: var(--radius-xl);
+      padding: 14px;
+    }
+
+    .notice strong {
+      color: var(--warn-ink);
+      font-size: 14px;
+    }
+
+    .notice p {
+      margin: 3px 0 0;
+      color: #334155;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 1px 0 rgba(15, 23, 42, .04);
+      overflow: hidden;
+    }
+
+    .card-head {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 15px;
+      text-align: left;
+    }
+
+    .head-flex {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 15px;
+      background: var(--black);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .main {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .title-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .title-row h3 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.16;
+      letter-spacing: -.02em;
+    }
+
+    .aka {
+      margin: 5px 0 0;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 720;
+    }
+
+    .simple {
+      margin: 9px 0 0;
+      color: #334155;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .meta span {
+      border-radius: 999px;
+      background: var(--soft);
+      color: #334155;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .tilt-inversionista { background: var(--investor-bg); color: var(--investor-ink); border-color: #c7d2fe; }
+    .tilt-fundador { background: var(--founder-bg); color: var(--founder-ink); border-color: #bbf7d0; }
+    .tilt-neutral { background: var(--neutral-bg); color: var(--neutral-ink); border-color: #e2e8f0; }
+    .tilt-minoria { background: var(--minority-bg); color: var(--minority-ink); border-color: #fde68a; }
+    .tilt-compania { background: var(--company-bg); color: var(--company-ink); border-color: #a5f3fc; }
+
+    .chevron {
+      color: #94a3b8;
+      transition: transform .18s ease;
+      font-size: 22px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .card.open .chevron {
+      transform: rotate(180deg);
+    }
+
+    .card-body {
+      display: none;
+      border-top: 1px solid #f1f5f9;
+      padding: 13px 15px 15px;
+    }
+
+    .card.open .card-body {
+      display: block;
+      animation: show .16s ease-out;
+    }
+
+    @keyframes show {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .two {
+      display: grid;
+      gap: 9px;
+    }
+
+    @media (min-width: 720px) {
+      .two { grid-template-columns: 1fr 1fr; }
+      .shell { padding-top: 24px; }
+      .hero { padding: 30px; }
+      .card-head { padding: 18px; }
+      .card-body { padding: 16px 18px 18px; }
+    }
+
+    .box {
+      border-radius: 17px;
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .box p {
+      margin: 0;
+    }
+
+    .box-title {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .box.investor {
+      background: var(--investor-bg);
+      color: #1e293b;
+    }
+
+    .box.investor .box-title { color: var(--investor-ink); }
+
+    .box.founder {
+      background: var(--founder-bg);
+      color: #1e293b;
+    }
+
+    .box.founder .box-title { color: var(--founder-ink); }
+
+    .box.outline {
+      background: white;
+      border: 1px solid var(--line);
+    }
+
+    .box.danger {
+      background: var(--danger-bg);
+      border: 1px solid #fecdd3;
+    }
+
+    .box.danger .box-title { color: var(--danger-ink); }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .body-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .empty {
+      display: none;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 30px 18px;
+      text-align: center;
+    }
+
+    .empty strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .empty span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      padding: 18px 4px;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .footer strong { color: #0f172a; }
+
+    .float-actions {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      max-width: 860px;
+      margin: 0 auto;
+      pointer-events: none;
+    }
+
+    .float-actions button {
+      pointer-events: auto;
+      border: 1px solid rgba(15, 23, 42, .12);
+      border-radius: 18px;
+      background: rgba(2, 6, 23, .94);
+      color: white;
+      padding: 13px 12px;
+      font-size: 12px;
+      font-weight: 950;
+      box-shadow: 0 14px 34px rgba(2, 6, 23, .25);
+      backdrop-filter: blur(10px);
+    }
+
+    .float-actions button.secondary {
+      background: rgba(255,255,255,.94);
+      color: var(--ink);
+    }
+
+    @media print {
+      .toolbar, .float-actions { display: none !important; }
+      body { background: white; }
+      .shell { width: 100%; max-width: none; padding: 0; }
+      .hero { border-radius: 0; box-shadow: none; }
+      .card-body { display: block !important; }
+      .card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Term sheet · SAFE · mutuo convertible · pacto de accionistas</p>
+      <h1>Mapa de cláusulas startup</h1>
+      <p>
+        Guía esquemática para entender qué hace cada cláusula, a quién favorece y cómo se puede negociar desde una posición pro fundador o pro inversionista.
+      </p>
+      <div class="stats">
+        <div class="stat"><strong id="totalCount">0</strong><span>cláusulas</span></div>
+        <div class="stat"><strong id="visibleCount">0</strong><span>visibles</span></div>
+        <div class="stat"><strong>2</strong><span>posturas</span></div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Filtros">
+      <div class="searchbox">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Buscar: drag, pay to play, cap, vesting..." autocomplete="off" />
+      </div>
+      <div id="categoryChips" class="chips" aria-label="Categorías"></div>
+      <div id="tiltChips" class="chips" aria-label="A quién favorece"></div>
+    </section>
+
+    <section class="grid">
+      <section class="panel">
+        <p class="panel-title">◎ Lectura rápida de negociación</p>
+        <div class="mini-row">
+          <strong>Más pro fundador</strong>
+          <span>Sin antidilución · vesting acotado · materias reservadas limitadas · SAFE simple · exclusividad corta.</span>
+        </div>
+        <div class="mini-row">
+          <strong>Zona razonable</strong>
+          <span>1x no participante · weighted average broad-based · pro rata limitado · reportes simples · drag con mayoría calificada.</span>
+        </div>
+        <div class="mini-row">
+          <strong>Más pro inversionista</strong>
+          <span>Full ratchet · veto individual · preferencia participante · no competencia amplia · garantías personales fuertes.</span>
+        </div>
+      </section>
+
+      <section class="notice">
+        <div>⚠️</div>
+        <div>
+          <strong>Regla práctica</strong>
+          <p>
+            La cláusula no se evalúa sola. Una valorización alta puede ser mala si viene con preferencia dura, antidilución agresiva y vetos amplios. Una valorización menor puede ser mejor si mantiene control, simplicidad y una cap table financiable.
+          </p>
+        </div>
+      </section>
+
+      <section id="cards" class="grid" aria-label="Listado de cláusulas"></section>
+
+      <section id="emptyState" class="empty">
+        <strong>No hay resultados con esos filtros.</strong>
+        <span>Prueba con “drag”, “cap”, “vesting”, “veto”, “SAFE” o “IP”.</span>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <strong>Uso práctico:</strong> pensado como mapa pedagógico y de negociación. No reemplaza revisión legal de documentos definitivos, especialmente si hay reforma estatutaria, aumento de capital, SAFE, mutuo convertible o pacto de accionistas bajo ley chilena.
+    </footer>
+  </main>
+
+  <div class="float-actions">
+    <button id="expandAll" type="button">Abrir todo</button>
+    <button id="downloadJson" class="secondary" type="button">Descargar JSON</button>
+  </div>
+
+  <script id="clauses-data" type="application/json">
+[
+  {
+    "id": "instrumento",
+    "title": "Tipo de instrumento",
+    "aka": "SAFE, mutuo convertible, equity directo, aumento de capital",
+    "category": "Estructura",
+    "stage": "Term sheet",
+    "tilt": "Neutral",
+    "simple": "Define si el inversionista entra ahora como accionista o si tendrá derecho a convertirse en accionista más adelante.",
+    "investor": "Prefiere claridad de conversión, prioridad de cierre y mecanismos que aseguren que su plata se transforme en participación real bajo condiciones objetivas.",
+    "founder": "Prefiere instrumentos simples, rápidos y baratos de implementar, sin reformar estatutos de inmediato ni entregar control político antes de tiempo.",
+    "negotiation": [
+      "En etapa temprana, SAFE o mutuo convertible pueden ser mejores que equity directo si todavía no hay valorización madura.",
+      "Para inversionistas familiares o tradicionales en Chile, el mutuo convertible suele sentirse más tangible que un SAFE puro.",
+      "Si se usa equity directo, hay que revisar estatutos, aumento de capital, derechos preferentes y pactos desde el inicio."
+    ],
+    "redFlags": [
+      "Prometer acciones sin mecanismo societario claro.",
+      "Usar un SAFE copiado de EE.UU. sin adaptación al derecho chileno.",
+      "No distinguir entre efecto económico simulado y adquisición jurídica real de acciones."
+    ],
+    "founderPosition": "Mantener estructura flexible: instrumento convertible simple, con conversión futura clara y sin derechos políticos excesivos antes de la conversión.",
+    "investorPosition": "Exigir evento de conversión, derechos mínimos de información y protección si la compañía nunca levanta una ronda calificada."
+  },
+  {
+    "id": "valuation-cap",
+    "title": "Valuation cap",
+    "aka": "Techo de valorización",
+    "category": "Economía",
+    "stage": "Term sheet",
+    "tilt": "Inversionista",
+    "simple": "Pone un techo a la valorización que se usará para convertir la inversión. Si la startup sube mucho de valor, el inversionista temprano recibe más acciones.",
+    "investor": "Es la recompensa por asumir riesgo temprano. Mientras más bajo el cap, mayor porcentaje obtendrá al convertir.",
+    "founder": "Un cap demasiado bajo puede vender demasiado barato el futuro de la compañía y castigar rondas posteriores.",
+    "negotiation": [
+      "El cap debe conversar con el monto invertido, la etapa de avance, tracción, riesgo y mercado.",
+      "Puede combinarse con descuento, pero no conviene que ambos sean agresivos al mismo tiempo.",
+      "En Chile debe explicarse bien para que no se confunda con una valorización definitiva de la sociedad."
+    ],
+    "redFlags": [
+      "Cap muy bajo para una inversión pequeña.",
+      "No definir si se calcula pre-money o post-money.",
+      "No modelar la dilución antes de firmar."
+    ],
+    "founderPosition": "Subir el cap, limitar beneficios acumulados y dejar claro que no es una venta definitiva de la compañía.",
+    "investorPosition": "Fijar un cap razonablemente bajo para compensar riesgo temprano y asegurar upside."
+  },
+  {
+    "id": "discount",
+    "title": "Descuento de conversión",
+    "aka": "Conversion discount",
+    "category": "Economía",
+    "stage": "Term sheet",
+    "tilt": "Inversionista",
+    "simple": "Permite que el inversionista convierta su inversión a un precio menor que el precio pagado por los nuevos inversionistas de la siguiente ronda.",
+    "investor": "Recibe una mejor entrada por haber financiado antes, cuando la empresa era más riesgosa.",
+    "founder": "Un descuento excesivo aumenta la dilución y puede hacer difícil explicar la ronda a nuevos inversionistas.",
+    "negotiation": [
+      "Rangos comunes suelen moverse alrededor de 10% a 25%, dependiendo del riesgo y plazo.",
+      "Debe definirse si el inversionista recibe el mejor resultado entre cap y descuento, o si se acumulan.",
+      "Conviene modelar escenarios con y sin ronda futura."
+    ],
+    "redFlags": [
+      "Descuento alto más cap bajo más intereses.",
+      "No regular qué pasa si nunca ocurre la ronda calificada.",
+      "No explicar la mecánica de conversión en números simples."
+    ],
+    "founderPosition": "Descuento moderado, no acumulativo con otros beneficios agresivos y sujeto a una ronda calificada real.",
+    "investorPosition": "Descuento suficiente para reflejar riesgo temprano, idealmente con opción de usar el mecanismo más favorable."
+  },
+  {
+    "id": "qualified-financing",
+    "title": "Ronda calificada",
+    "aka": "Qualified financing",
+    "category": "Conversión",
+    "stage": "Term sheet",
+    "tilt": "Neutral",
+    "simple": "Es el evento que gatilla la conversión de un SAFE o mutuo convertible. Normalmente exige que la startup levante un monto mínimo de inversión nueva.",
+    "investor": "Quiere evitar que la compañía use una mini ronda artificial para convertirlo en malas condiciones.",
+    "founder": "Quiere un umbral realista, para que la conversión no quede bloqueada por una meta demasiado alta.",
+    "negotiation": [
+      "Definir monto mínimo, tipo de inversionista y plazo esperado.",
+      "Puede incluir conversión automática si se alcanza el umbral y conversión opcional si no se alcanza.",
+      "Debe coordinarse con intereses, descuentos, cap y vencimiento del instrumento."
+    ],
+    "redFlags": [
+      "Umbral tan alto que nunca se gatilla.",
+      "Umbral tan bajo que permite manipular la conversión.",
+      "No regular venta de la compañía antes de la ronda."
+    ],
+    "founderPosition": "Umbral alcanzable y flexible, con posibilidad de convertir por acuerdo si la ronda no cumple exactamente los requisitos.",
+    "investorPosition": "Umbral objetivo, no manipulable y con derechos si hay venta, liquidación o cambio de control antes de convertir."
+  },
+  {
+    "id": "liquidation-preference",
+    "title": "Preferencia de liquidación",
+    "aka": "Liquidation preference",
+    "category": "Economía",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Define quién cobra primero si la compañía se vende, se liquida o tiene un evento de salida. Usualmente protege al inversionista.",
+    "investor": "Busca recuperar primero su inversión antes de que los fundadores reciban excedentes.",
+    "founder": "Si es muy dura, puede dejar al fundador sin upside incluso si la empresa se vende por un monto razonable.",
+    "negotiation": [
+      "La versión más aceptable suele ser 1x no participante: recupera su inversión o participa como accionista, pero no ambas cosas.",
+      "La versión participante permite recuperar inversión y luego participar en el remanente; es mucho más favorable al inversionista.",
+      "Debe analizarse junto con valorización: una valorización alta con preferencia dura puede ser peor que valorización menor con preferencia simple."
+    ],
+    "redFlags": [
+      "Preferencia participante sin límite.",
+      "Múltiplos de 2x o 3x en etapa temprana.",
+      "No modelar escenarios de venta baja, media y alta."
+    ],
+    "founderPosition": "Preferencia 1x no participante, sin múltiplos, sin acumulación y con conversión voluntaria a ordinarias.",
+    "investorPosition": "Al menos 1x de recuperación prioritaria, especialmente si la valorización de entrada es exigente."
+  },
+  {
+    "id": "anti-dilution",
+    "title": "Antidilución",
+    "aka": "Weighted average, full ratchet, down round protection",
+    "category": "Protección",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Protege al inversionista si la compañía levanta una ronda futura a una valorización menor que la ronda anterior.",
+    "investor": "Quiere no quedar castigado si entró caro y luego la empresa baja su valorización.",
+    "founder": "Una antidilución agresiva puede destruir la cap table y trasladar todo el costo de la baja al fundador y al equipo.",
+    "negotiation": [
+      "La alternativa razonable suele ser weighted average broad-based.",
+      "Full ratchet es la versión más dura: reajusta como si todo hubiera sido al precio más bajo.",
+      "En rondas tempranas muchas veces se negocia sin antidilución o con una protección muy limitada."
+    ],
+    "redFlags": [
+      "Full ratchet en una startup muy temprana.",
+      "Antidilución que también afecta emisiones para trabajadores o advisors.",
+      "No excluir ESOP, reorganizaciones internas o emisiones aprobadas."
+    ],
+    "founderPosition": "Sin antidilución o weighted average broad-based, con exclusiones claras para ESOP, advisors y rondas estratégicas.",
+    "investorPosition": "Protección weighted average para down rounds, especialmente si entra con valorización relevante."
+  },
+  {
+    "id": "pro-rata",
+    "title": "Derecho pro rata",
+    "aka": "Derecho a mantener porcentaje",
+    "category": "Protección",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Permite al inversionista invertir en futuras rondas para mantener su porcentaje y no diluirse.",
+    "investor": "Es clave para conservar exposición si la compañía se vuelve atractiva.",
+    "founder": "Puede limitar el espacio disponible para nuevos inversionistas estratégicos si todos los antiguos tienen prioridad.",
+    "negotiation": [
+      "Se puede limitar a inversionistas principales o a quienes superen cierto ticket.",
+      "Puede condicionarse a estar al día y no incumplir el pacto.",
+      "Debe coordinarse con aumentos de capital y derechos preferentes legales o estatutarios."
+    ],
+    "redFlags": [
+      "Todos tienen pro rata ilimitado sin umbral mínimo.",
+      "No regular plazos para ejercer el derecho.",
+      "Bloquear entrada de un lead investor futuro."
+    ],
+    "founderPosition": "Pro rata limitado, con plazos cortos y carve-out para inversionistas estratégicos o lead investors de rondas futuras.",
+    "investorPosition": "Derecho robusto a mantener porcentaje en futuras rondas, idealmente con acceso anticipado a la información de la ronda."
+  },
+  {
+    "id": "pay-to-play",
+    "title": "Pay to play",
+    "aka": "Invierte o pierdes privilegios",
+    "category": "Protección",
+    "stage": "Pacto de accionistas",
+    "tilt": "Fundador",
+    "simple": "Obliga a los inversionistas a seguir participando en rondas futuras si quieren mantener ciertos derechos preferentes.",
+    "investor": "Puede verlo como una obligación dura, porque lo fuerza a poner más plata para no perder privilegios.",
+    "founder": "Ayuda a evitar inversionistas pasivos que bloquean o protegen su posición sin apoyar financieramente a la compañía.",
+    "negotiation": [
+      "Se usa especialmente para rondas difíciles o compañías que necesitan compromiso continuo.",
+      "Puede convertir acciones preferentes en ordinarias si el inversionista no participa.",
+      "Debe ser proporcional: no todos los inversionistas tienen la misma capacidad de follow-on."
+    ],
+    "redFlags": [
+      "Castigos automáticos desproporcionados.",
+      "Obligar a tickets futuros imposibles de anticipar.",
+      "No distinguir entre inversionista pequeño e inversionista principal."
+    ],
+    "founderPosition": "Incluirlo para alinear incentivos: quien no acompaña rondas críticas pierde ciertos privilegios económicos o políticos.",
+    "investorPosition": "Aceptar solo con umbrales razonables, excepciones y consecuencias acotadas."
+  },
+  {
+    "id": "vesting",
+    "title": "Founder vesting",
+    "aka": "Reverse vesting, permanencia del fundador",
+    "category": "Equipo",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Sujeta parte de las acciones del fundador a permanencia en la compañía. Si se va antes, puede perder o vender de vuelta parte de sus acciones.",
+    "investor": "Evita que el fundador se vaya temprano llevándose todo el porcentaje.",
+    "founder": "Puede sentirse injusto si el fundador ya creó la compañía antes de la inversión.",
+    "negotiation": [
+      "Debe distinguir acciones ya ganadas por trabajo pasado y acciones sujetas a permanencia futura.",
+      "Normalmente se negocia plazo, cliff, aceleración y causales de salida.",
+      "Es una cláusula sensible: mal redactada puede desmotivar al fundador."
+    ],
+    "redFlags": [
+      "Vesting sobre el 100% de acciones ya ganadas sin justificación.",
+      "Sin aceleración en venta de la compañía.",
+      "Causales de bad leaver demasiado abiertas."
+    ],
+    "founderPosition": "Reconocer trabajo previo, limitar el porcentaje sujeto a vesting y pactar aceleración razonable en cambio de control o despido sin causa.",
+    "investorPosition": "Exigir permanencia mínima del fundador clave y recompra si abandona antes de cumplir hitos."
+  },
+  {
+    "id": "good-bad-leaver",
+    "title": "Good leaver / bad leaver",
+    "aka": "Salida buena o mala del fundador",
+    "category": "Equipo",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Define qué pasa si un fundador deja la compañía. No es lo mismo irse por enfermedad o despido sin causa que competir, incumplir o abandonar.",
+    "investor": "Quiere consecuencias fuertes si el fundador perjudica a la compañía.",
+    "founder": "Quiere evitar que cualquier salida sea tratada como incumplimiento grave.",
+    "negotiation": [
+      "Good leaver debe incluir muerte, incapacidad, salida acordada o despido sin causa.",
+      "Bad leaver debe reservarse para incumplimientos graves, competencia, fraude o abandono real.",
+      "El precio de recompra debe ser distinto según la causal."
+    ],
+    "redFlags": [
+      "Bad leaver definido como cualquier renuncia.",
+      "Recompra a precio nominal incluso cuando hay años de trabajo acumulado.",
+      "Causal genérica como pérdida de confianza sin procedimiento."
+    ],
+    "founderPosition": "Definiciones cerradas, procedimiento claro y recompra a valor justo salvo incumplimiento grave probado.",
+    "investorPosition": "Bad leaver fuerte para fraude, competencia, abandono o incumplimiento material."
+  },
+  {
+    "id": "non-compete",
+    "title": "No competencia",
+    "aka": "Non-compete",
+    "category": "Equipo",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Impide que fundadores o personas clave desarrollen un negocio competidor durante cierto tiempo y dentro de cierto mercado.",
+    "investor": "Protege la inversión: no quiere financiar a una persona que después crea o apoya una empresa competidora.",
+    "founder": "Puede limitar excesivamente su libertad laboral y empresarial si queda redactada muy amplia.",
+    "negotiation": [
+      "Debe ser específica en plazo, territorio, línea de negocio y personas obligadas.",
+      "En Chile conviene ser especialmente cuidadoso con proporcionalidad y razonabilidad.",
+      "Puede complementarse con no solicitación de clientes, trabajadores y proveedores, que suele ser más defendible."
+    ],
+    "redFlags": [
+      "Prohibición mundial, indefinida o sobre cualquier actividad tecnológica.",
+      "Aplicarla a socios pasivos o minoritarios sin rol operativo.",
+      "No distinguir competencia directa de inversiones financieras pasivas."
+    ],
+    "founderPosition": "Limitarla a competencia directa, por plazo breve, territorio razonable y solo mientras exista rol operativo o acceso a información sensible.",
+    "investorPosition": "Exigir no competencia y no solicitación para fundadores clave, especialmente mientras trabajen en la compañía y por un periodo posterior razonable."
+  },
+  {
+    "id": "non-solicit",
+    "title": "No solicitación",
+    "aka": "No levantar clientes, equipo o proveedores",
+    "category": "Equipo",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Prohíbe llevarse clientes, trabajadores, proveedores o contactos estratégicos de la compañía.",
+    "investor": "Protege el activo comercial y humano que se está financiando.",
+    "founder": "Es más aceptable que una no competencia total, pero debe ser precisa.",
+    "negotiation": [
+      "Puede aplicarse a trabajadores clave, clientes activos y oportunidades concretas trabajadas por la compañía.",
+      "Debe tener plazo definido y alcance objetivo.",
+      "Conviene separar no solicitación de clientes y no solicitación de empleados."
+    ],
+    "redFlags": [
+      "Prohibir cualquier contacto con cualquier persona del mercado.",
+      "No distinguir clientes reales de prospectos vagos.",
+      "Plazos excesivos."
+    ],
+    "founderPosition": "Aceptar una no solicitación acotada a clientes y equipo con los que tuvo contacto real por la compañía.",
+    "investorPosition": "Mantener protección fuerte sobre clientes, pipeline, equipo y relaciones estratégicas."
+  },
+  {
+    "id": "drag-along",
+    "title": "Drag along",
+    "aka": "Derecho de arrastre, dragalón",
+    "category": "Salida",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Permite que una mayoría obligue a los demás accionistas a vender si aparece una venta de la compañía bajo condiciones aprobadas.",
+    "investor": "Evita que un minoritario bloquee una venta atractiva.",
+    "founder": "Puede ser peligroso si permite vender demasiado pronto o en condiciones que no respetan su upside.",
+    "negotiation": [
+      "Debe exigir aprobación de fundadores y/o inversionistas relevantes, no solo una mayoría simple mal diseñada.",
+      "Debe regular precio mínimo, condiciones iguales y tratamiento de preferencias.",
+      "Es clave para que la compañía sea vendible."
+    ],
+    "redFlags": [
+      "Drag activado por un inversionista minoritario.",
+      "Sin precio mínimo ni estándar de venta justa.",
+      "Obligar a fundadores a asumir indemnidades ilimitadas al comprador."
+    ],
+    "founderPosition": "Aceptar drag solo con mayoría calificada, precio mínimo, límites de responsabilidad y aprobación de una mayoría de fundadores o acciones ordinarias.",
+    "investorPosition": "Incluir drag robusto para asegurar exit y evitar holdouts."
+  },
+  {
+    "id": "tag-along",
+    "title": "Tag along",
+    "aka": "Derecho de acompañamiento, tragalón",
+    "category": "Salida",
+    "stage": "Pacto de accionistas",
+    "tilt": "Minoría",
+    "simple": "Permite que un accionista minoritario venda junto con un accionista mayoritario si este vende sus acciones a un tercero.",
+    "investor": "Protege frente a cambios de control donde el fundador o mayoritario sale y deja a los minoritarios dentro.",
+    "founder": "Puede hacer más lenta una venta parcial de acciones del fundador o de un inversionista grande.",
+    "negotiation": [
+      "Debe definir umbral de venta que gatilla el derecho.",
+      "Puede ser proporcional o total si hay cambio de control.",
+      "Debe coordinarse con ROFR, restricciones de transferencia y drag along."
+    ],
+    "redFlags": [
+      "Tag para cualquier venta mínima.",
+      "No regular plazos de ejercicio.",
+      "Contradecir el drag along."
+    ],
+    "founderPosition": "Limitarlo a ventas relevantes o cambio de control, con plazos claros y sin bloquear ventas internas menores.",
+    "investorPosition": "Exigir tag para no quedar atrapado si el controlador vende o cambia el control económico."
+  },
+  {
+    "id": "rofr",
+    "title": "ROFR / ROFO",
+    "aka": "Derecho de primera opción, primera oferta o primera negativa",
+    "category": "Transferencias",
+    "stage": "Pacto de accionistas",
+    "tilt": "Compañía",
+    "simple": "Antes de vender acciones a un tercero, el accionista debe ofrecerlas o permitir que la sociedad o los demás accionistas las compren primero.",
+    "investor": "Evita que entren terceros indeseados a la cap table.",
+    "founder": "Puede restringir liquidez y hacer más difícil vender parte de sus acciones.",
+    "negotiation": [
+      "ROFR opera cuando ya hay una oferta de tercero; ROFO exige ofrecer primero antes de buscar comprador.",
+      "Debe definir precio, plazo y quién tiene prioridad: sociedad, fundadores o inversionistas.",
+      "No debe impedir reorganizaciones familiares o patrimoniales razonables si están controladas."
+    ],
+    "redFlags": [
+      "Plazos demasiado largos que matan cualquier venta.",
+      "Derechos duplicados e incompatibles.",
+      "No excluir transferencias permitidas."
+    ],
+    "founderPosition": "Permitir transferencias controladas y mantener plazos cortos para no bloquear liquidez legítima.",
+    "investorPosition": "ROFR fuerte para controlar entrada de terceros y proteger la cap table."
+  },
+  {
+    "id": "reserved-matters",
+    "title": "Materias reservadas",
+    "aka": "Veto rights, protective provisions",
+    "category": "Gobierno",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Lista de decisiones importantes que la compañía no puede tomar sin aprobación especial de ciertos inversionistas o accionistas.",
+    "investor": "Quiere protegerse frente a decisiones que cambien radicalmente el riesgo: deuda, venta, emisión de acciones, cambio de giro, sueldos, partes relacionadas.",
+    "founder": "Si son demasiadas, el inversionista pasa a controlar la empresa sin tener la operación diaria.",
+    "negotiation": [
+      "Deben limitarse a decisiones estructurales, no a gestión ordinaria.",
+      "Puede exigirse aprobación por mayoría de inversionistas preferentes, no por cada inversionista individual.",
+      "Conviene fijar umbrales monetarios: no todo gasto debe requerir veto."
+    ],
+    "redFlags": [
+      "Veto individual para inversionistas pequeños.",
+      "Materias operativas como contratar cualquier persona o aprobar cualquier gasto.",
+      "Sin mecanismo para resolver bloqueos."
+    ],
+    "founderPosition": "Materias reservadas acotadas, umbrales razonables y sin veto individual sobre la operación diaria.",
+    "investorPosition": "Veto sobre emisiones, deuda relevante, venta de activos, cambio de giro, dividendos, partes relacionadas y cambios de control."
+  },
+  {
+    "id": "board",
+    "title": "Directorio, administración u observador",
+    "aka": "Board seat, observer rights",
+    "category": "Gobierno",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Define si el inversionista tendrá asiento formal en la administración, derecho a designar director o solo participar como observador.",
+    "investor": "Busca visibilidad, control y capacidad de influir en decisiones estratégicas.",
+    "founder": "Quiere evitar burocracia y mantener capacidad de ejecución rápida.",
+    "negotiation": [
+      "En sociedades chilenas simples, hay que compatibilizarlo con la estructura estatutaria real.",
+      "Un observador puede ser suficiente en rondas tempranas.",
+      "Debe regular confidencialidad, conflictos de interés y acceso a información."
+    ],
+    "redFlags": [
+      "Asiento de control para ticket pequeño.",
+      "Observador con derecho de veto disfrazado.",
+      "No regular conflictos si el inversionista participa en competidores."
+    ],
+    "founderPosition": "Preferir observador o comité consultivo al inicio, con derechos proporcionales al ticket y sin frenar la operación.",
+    "investorPosition": "Solicitar asiento u observador, reportes periódicos y participación en decisiones estratégicas."
+  },
+  {
+    "id": "information-rights",
+    "title": "Derechos de información",
+    "aka": "Reporting, KPIs, estados financieros",
+    "category": "Gobierno",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Obliga a la compañía a entregar reportes financieros, métricas y antecedentes relevantes a los inversionistas.",
+    "investor": "Necesita monitorear su inversión y anticipar problemas.",
+    "founder": "Puede transformarse en carga administrativa excesiva si el reporte es demasiado sofisticado para la etapa.",
+    "negotiation": [
+      "Definir frecuencia: mensual, trimestral o semestral según etapa.",
+      "Definir contenido: caja, ventas, burn rate, runway, deuda, KPIs y conflictos relevantes.",
+      "Debe incluir confidencialidad y uso limitado de la información."
+    ],
+    "redFlags": [
+      "Reportes mensuales complejos para una empresa sin equipo financiero.",
+      "Acceso irrestricto a información sensible sin confidencialidad.",
+      "No diferenciar inversionistas grandes y pequeños."
+    ],
+    "founderPosition": "Reportes simples, estandarizados y proporcionales; acceso ampliado solo a inversionistas relevantes.",
+    "investorPosition": "Información periódica suficiente para revisar caja, cumplimiento de hitos y decisiones materiales."
+  },
+  {
+    "id": "esop",
+    "title": "Pool de incentivos",
+    "aka": "ESOP, stock options, phantom shares",
+    "category": "Equipo",
+    "stage": "Term sheet",
+    "tilt": "Neutral",
+    "simple": "Reserva un porcentaje para atraer y retener trabajadores, advisors o ejecutivos mediante acciones, opciones o incentivos equivalentes.",
+    "investor": "Quiere que exista pool para contratar talento sin renegociar cada vez.",
+    "founder": "Debe cuidar si el pool se crea antes o después de la inversión, porque eso cambia quién soporta la dilución.",
+    "negotiation": [
+      "El punto clave es si el pool se calcula pre-money o post-money.",
+      "En Chile puede implementarse con acciones, opciones, phantom shares u otros bonos contractuales.",
+      "Debe tener reglas de vesting, salida y aprobación."
+    ],
+    "redFlags": [
+      "Pool grande creado pre-money que diluye solo a fundadores.",
+      "Prometer stock options sin estructura societaria o tributaria clara.",
+      "No reservar incentivos para equipo clave."
+    ],
+    "founderPosition": "Pool razonable, idealmente post-money o compartiendo dilución con inversionistas; implementación simple y legalmente viable.",
+    "investorPosition": "Pool suficiente creado antes de la ronda para que la empresa pueda contratar sin pedir más dilución a inversionistas nuevos."
+  },
+  {
+    "id": "ip-assignment",
+    "title": "Propiedad intelectual",
+    "aka": "Cesión de IP, código, marca, know-how",
+    "category": "Legal",
+    "stage": "Due diligence",
+    "tilt": "Inversionista",
+    "simple": "Asegura que la compañía sea dueña o tenga derecho suficiente sobre software, marca, contenidos, datos, diseños y tecnología clave.",
+    "investor": "No quiere invertir en una empresa cuyo principal activo pertenece al fundador, a un proveedor o a un ex colaborador.",
+    "founder": "Debe ordenar cesiones sin sobrerregular ni bloquear herramientas externas necesarias para operar.",
+    "negotiation": [
+      "Revisar contratos de trabajadores, freelancers, proveedores tecnológicos y fundadores.",
+      "Distinguir propiedad de código propio, licencias de terceros, open source y cuentas SaaS.",
+      "Debe conectarse con confidencialidad y protección de datos."
+    ],
+    "redFlags": [
+      "Código escrito por terceros sin cesión.",
+      "Marca registrada a nombre del fundador y no de la sociedad.",
+      "Uso de software open source sin revisión de licencias."
+    ],
+    "founderPosition": "Regularizar lo esencial antes del cierre, sin aceptar declaraciones absolutas imposibles sobre todo el stack tecnológico.",
+    "investorPosition": "Exigir cesión o licencia robusta sobre activos críticos antes de invertir."
+  },
+  {
+    "id": "reps-warranties",
+    "title": "Declaraciones y garantías",
+    "aka": "Representations & warranties",
+    "category": "Legal",
+    "stage": "Cierre",
+    "tilt": "Inversionista",
+    "simple": "Son afirmaciones que la compañía y/o fundadores hacen sobre la situación legal, financiera, tributaria, laboral, tecnológica y societaria.",
+    "investor": "Le sirven para asignar responsabilidad si la empresa ocultó un problema relevante.",
+    "founder": "No debe garantizar más de lo que sabe o puede controlar.",
+    "negotiation": [
+      "Deben calificarse por conocimiento, materialidad y disclosures entregados.",
+      "No es lo mismo una garantía de la sociedad que una garantía personal del fundador.",
+      "Deben tener límites de monto, plazo y procedimiento de reclamo."
+    ],
+    "redFlags": [
+      "Responsabilidad personal ilimitada de fundadores.",
+      "Garantías absolutas sobre asuntos no revisados.",
+      "No anexar excepciones o disclosure schedule."
+    ],
+    "founderPosition": "Garantías razonables, calificadas por conocimiento, con límite temporal y monetario, y sin responsabilidad personal ilimitada.",
+    "investorPosition": "Garantías amplias sobre cap table, propiedad intelectual, impuestos, litigios, deuda y cumplimiento."
+  },
+  {
+    "id": "conditions-precedent",
+    "title": "Condiciones precedentes",
+    "aka": "CPs, condiciones de cierre",
+    "category": "Cierre",
+    "stage": "Cierre",
+    "tilt": "Inversionista",
+    "simple": "Son cosas que deben cumplirse antes de que el inversionista desembolse la plata o antes de que se cierre la ronda.",
+    "investor": "Quiere que la empresa arregle problemas críticos antes de transferir fondos.",
+    "founder": "Quiere evitar una lista infinita que retrase el cierre y deje la ronda en el aire.",
+    "negotiation": [
+      "Separar condiciones críticas de condiciones post-cierre.",
+      "Usar plazos y responsables claros.",
+      "No todo hallazgo de due diligence debe bloquear el desembolso."
+    ],
+    "redFlags": [
+      "Condiciones vagas como ‘a satisfacción del inversionista’ sin estándar objetivo.",
+      "CPs imposibles de cumplir antes del cierre.",
+      "No regular qué pasa si una condición falla."
+    ],
+    "founderPosition": "CPs objetivas, pocas y críticas; lo demás como obligaciones post-cierre con plazo razonable.",
+    "investorPosition": "Condicionar desembolso a orden societario, IP, cap table, poderes, firmas y ausencia de contingencias materiales."
+  },
+  {
+    "id": "no-shop",
+    "title": "Exclusividad / no shop",
+    "aka": "No buscar otros inversionistas por un plazo",
+    "category": "Cierre",
+    "stage": "Term sheet",
+    "tilt": "Inversionista",
+    "simple": "Durante un plazo, la compañía se compromete a no negociar una inversión equivalente con otros interesados.",
+    "investor": "Protege el tiempo y costo de due diligence: no quiere hacer todo el trabajo para que otro se lleve la ronda.",
+    "founder": "Puede quedar atrapado si el inversionista demora o no cierra.",
+    "negotiation": [
+      "Debe ser corta: por ejemplo, 30 a 60 días según complejidad.",
+      "Debe exigir avances reales del inversionista.",
+      "Puede excluir conversaciones ya iniciadas o inversionistas estratégicos específicos."
+    ],
+    "redFlags": [
+      "Exclusividad larga sin obligación de avanzar.",
+      "No tener salida si el inversionista no entrega documentos o no hace due diligence.",
+      "Bloquear toda alternativa de financiamiento."
+    ],
+    "founderPosition": "Exclusividad corta, condicionada a avances concretos y sin bloquear financiamiento necesario para operar.",
+    "investorPosition": "Exclusividad razonable mientras revisa antecedentes, estructura documentos y compromete recursos."
+  },
+  {
+    "id": "mfn",
+    "title": "MFN",
+    "aka": "Most Favored Nation, cláusula de mejor trato",
+    "category": "Protección",
+    "stage": "Term sheet",
+    "tilt": "Inversionista",
+    "simple": "Permite que un inversionista temprano adopte condiciones más favorables que la compañía entregue después a otro inversionista similar.",
+    "investor": "Evita quedar peor que alguien que entra después en condiciones comparables.",
+    "founder": "Puede rigidizar futuras negociaciones y espantar inversionistas estratégicos si es demasiado amplia.",
+    "negotiation": [
+      "Debe limitarse a instrumentos de la misma clase o ronda puente comparable.",
+      "Puede excluir inversionistas estratégicos, lead investors o rondas calificadas grandes.",
+      "Debe tener plazo o evento de término."
+    ],
+    "redFlags": [
+      "MFN perpetua y aplicable a cualquier contrato futuro.",
+      "No distinguir entre tickets pequeños y grandes.",
+      "Impedir negociar condiciones especiales con un lead investor."
+    ],
+    "founderPosition": "MFN limitada por plazo, instrumento, monto y tipo de inversionista.",
+    "investorPosition": "MFN para no quedar en peor posición que otros inversionistas tempranos de la misma ronda."
+  },
+  {
+    "id": "debt",
+    "title": "Endeudamiento permitido",
+    "aka": "Debt covenant, deuda relevante",
+    "category": "Gobierno",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Limita la capacidad de la compañía para tomar deuda sin aprobación especial.",
+    "investor": "No quiere que su inversión quede subordinada o que la empresa aumente el riesgo financiero sin control.",
+    "founder": "Necesita flexibilidad para líneas de crédito, factoring o financiamiento operacional normal.",
+    "negotiation": [
+      "Fijar umbral monetario o porcentaje sobre ingresos/caja.",
+      "Excluir deuda operacional ordinaria aprobada en presupuesto.",
+      "Distinguir deuda bancaria, deuda con relacionados y deuda convertible."
+    ],
+    "redFlags": [
+      "Prohibición total de endeudamiento.",
+      "Sin excepción para capital de trabajo.",
+      "Permitir deuda con partes relacionadas sin control."
+    ],
+    "founderPosition": "Aprobar deuda ordinaria hasta cierto umbral y exigir veto solo para deuda extraordinaria o con relacionados.",
+    "investorPosition": "Veto sobre deuda relevante, garantías, prendas, factoring agresivo y obligaciones con relacionados."
+  },
+  {
+    "id": "related-party",
+    "title": "Operaciones con partes relacionadas",
+    "aka": "Related party transactions",
+    "category": "Gobierno",
+    "stage": "Pacto de accionistas",
+    "tilt": "Inversionista",
+    "simple": "Regula contratos entre la compañía y fundadores, familiares, sociedades relacionadas o inversionistas.",
+    "investor": "Evita extracción de valor por sueldos, préstamos, servicios o contratos con relacionados.",
+    "founder": "Debe permitir operaciones reales y eficientes si son a precio de mercado.",
+    "negotiation": [
+      "Exigir aprobación especial sobre montos relevantes.",
+      "Permitir contratos ordinarios a valor de mercado y debidamente informados.",
+      "Regular sueldos de fundadores, préstamos y prestación de servicios."
+    ],
+    "redFlags": [
+      "Fundadores facturando a la compañía sin aprobación.",
+      "Préstamos a socios sin condiciones claras.",
+      "Prohibición absoluta que impide operaciones razonables."
+    ],
+    "founderPosition": "Permitir operaciones justificadas, informadas y a precio de mercado; veto solo sobre montos relevantes.",
+    "investorPosition": "Aprobación previa para contratos, pagos, préstamos o beneficios a relacionados."
+  },
+  {
+    "id": "deadlock",
+    "title": "Bloqueos y solución de controversias",
+    "aka": "Deadlock, arbitraje, shotgun",
+    "category": "Gobierno",
+    "stage": "Pacto de accionistas",
+    "tilt": "Neutral",
+    "simple": "Define qué pasa si los socios no logran aprobar una decisión crítica o si hay conflicto entre fundadores e inversionistas.",
+    "investor": "Quiere una salida ordenada si la compañía queda paralizada.",
+    "founder": "Quiere evitar mecanismos que permitan expulsarlo o forzar una venta injusta.",
+    "negotiation": [
+      "Primero deben existir etapas de negociación, comité o mediación.",
+      "Arbitraje puede ser adecuado para disputas complejas y confidenciales.",
+      "Mecanismos tipo shotgun son peligrosos si hay asimetría financiera."
+    ],
+    "redFlags": [
+      "Shotgun entre partes con billeteras muy distintas.",
+      "No regular decisiones urgentes mientras se resuelve el conflicto.",
+      "Jurisdicción o costos desproporcionados."
+    ],
+    "founderPosition": "Mecanismo gradual, sin shotgun abusivo, con continuidad operacional y arbitraje razonable.",
+    "investorPosition": "Mecanismo rápido para resolver bloqueos en materias críticas y proteger valor."
+  }
+]
+  </script>
+
+  <script>
+    const clauses = JSON.parse(document.getElementById("clauses-data").textContent);
+
+    const state = {
+      query: "",
+      category: "Todas",
+      tilt: "Todos",
+      expanded: new Set(["anti-dilution"])
+    };
+
+    const els = {
+      search: document.getElementById("searchInput"),
+      categoryChips: document.getElementById("categoryChips"),
+      tiltChips: document.getElementById("tiltChips"),
+      cards: document.getElementById("cards"),
+      empty: document.getElementById("emptyState"),
+      totalCount: document.getElementById("totalCount"),
+      visibleCount: document.getElementById("visibleCount"),
+      expandAll: document.getElementById("expandAll"),
+      downloadJson: document.getElementById("downloadJson")
+    };
+
+    const tiltLabels = ["Todos", "Fundador", "Inversionista", "Neutral", "Minoría", "Compañía"];
+    const categories = ["Todas", ...Array.from(new Set(clauses.map(c => c.category)))];
+
+    const icons = {
+      "Estructura": "▣",
+      "Economía": "$",
+      "Conversión": "↻",
+      "Protección": "🛡",
+      "Equipo": "👥",
+      "Salida": "↔",
+      "Transferencias": "⇄",
+      "Gobierno": "⚖",
+      "Legal": "§",
+      "Cierre": "✓"
+    };
+
+    function normalize(value) {
+      return String(value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function tiltClass(tilt) {
+      return "tilt-" + normalize(tilt)
+        .replace("inversionista", "inversionista")
+        .replace("fundador", "fundador")
+        .replace("neutral", "neutral")
+        .replace("minoria", "minoria")
+        .replace("compania", "compania");
+    }
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function makeChip(label, current, onClick) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "chip" + (label === current ? " active" : "");
+      btn.textContent = label;
+      btn.addEventListener("click", onClick);
+      return btn;
+    }
+
+    function renderFilters() {
+      els.categoryChips.innerHTML = "";
+      categories.forEach(cat => {
+        els.categoryChips.appendChild(makeChip(cat, state.category, () => {
+          state.category = cat;
+          render();
+        }));
+      });
+
+      els.tiltChips.innerHTML = "";
+      tiltLabels.forEach(tilt => {
+        els.tiltChips.appendChild(makeChip(tilt, state.tilt, () => {
+          state.tilt = tilt;
+          render();
+        }));
+      });
+    }
+
+    function filteredClauses() {
+      const q = normalize(state.query.trim());
+      return clauses.filter(c => {
+        const haystack = normalize([
+          c.title,
+          c.aka,
+          c.category,
+          c.stage,
+          c.tilt,
+          c.simple,
+          c.investor,
+          c.founder,
+          c.founderPosition,
+          c.investorPosition,
+          ...(c.negotiation || []),
+          ...(c.redFlags || [])
+        ].join(" "));
+
+        const matchesQuery = !q || haystack.includes(q);
+        const matchesCategory = state.category === "Todas" || c.category === state.category;
+        const matchesTilt = state.tilt === "Todos" || c.tilt === state.tilt;
+
+        return matchesQuery && matchesCategory && matchesTilt;
+      });
+    }
+
+    function list(items) {
+      return `<ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+    }
+
+    function cardHtml(c) {
+      const isOpen = state.expanded.has(c.id);
+      const icon = icons[c.category] || "•";
+      return `
+        <article class="card ${isOpen ? "open" : ""}" data-card-id="${escapeHtml(c.id)}">
+          <button class="card-head" type="button" aria-expanded="${isOpen ? "true" : "false"}" aria-controls="body-${escapeHtml(c.id)}">
+            <div class="head-flex">
+              <div class="avatar">${icon}</div>
+              <div class="main">
+                <div class="title-row">
+                  <h3>${escapeHtml(c.title)}</h3>
+                  <span class="badge ${tiltClass(c.tilt)}">Favorece: ${escapeHtml(c.tilt)}</span>
+                </div>
+                <p class="aka">${escapeHtml(c.aka)}</p>
+                <p class="simple">${escapeHtml(c.simple)}</p>
+                <div class="meta">
+                  <span>${escapeHtml(c.category)}</span>
+                  <span>${escapeHtml(c.stage)}</span>
+                </div>
+              </div>
+              <div class="chevron">⌄</div>
+            </div>
+          </button>
+
+          <div id="body-${escapeHtml(c.id)}" class="card-body">
+            <div class="body-stack">
+              <div class="two">
+                <div class="box investor">
+                  <span class="box-title">Lectura pro inversionista</span>
+                  <p>${escapeHtml(c.investor)}</p>
+                </div>
+                <div class="box founder">
+                  <span class="box-title">Lectura pro fundador</span>
+                  <p>${escapeHtml(c.founder)}</p>
+                </div>
+              </div>
+
+              <div class="box outline">
+                <span class="box-title">Cómo negociarla</span>
+                ${list(c.negotiation || [])}
+              </div>
+
+              <div class="box danger">
+                <span class="box-title">Red flags</span>
+                ${list(c.redFlags || [])}
+              </div>
+
+              <div class="two">
+                <div class="box outline">
+                  <span class="box-title">Posición sugerida fundador</span>
+                  <p>${escapeHtml(c.founderPosition)}</p>
+                </div>
+                <div class="box outline">
+                  <span class="box-title">Posición sugerida inversionista</span>
+                  <p>${escapeHtml(c.investorPosition)}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderCards(items) {
+      els.cards.innerHTML = items.map(cardHtml).join("");
+      els.empty.style.display = items.length ? "none" : "block";
+
+      document.querySelectorAll("[data-card-id]").forEach(card => {
+        const id = card.getAttribute("data-card-id");
+        const head = card.querySelector(".card-head");
+        head.addEventListener("click", () => {
+          if (state.expanded.has(id)) state.expanded.delete(id);
+          else state.expanded.add(id);
+          renderCards(filteredClauses());
+        });
+      });
+    }
+
+    function render() {
+      renderFilters();
+      const items = filteredClauses();
+      els.totalCount.textContent = clauses.length;
+      els.visibleCount.textContent = items.length;
+      renderCards(items);
+    }
+
+    els.search.addEventListener("input", (event) => {
+      state.query = event.target.value;
+      render();
+    });
+
+    els.expandAll.addEventListener("click", () => {
+      const items = filteredClauses();
+      const allOpen = items.every(item => state.expanded.has(item.id));
+      if (allOpen) {
+        items.forEach(item => state.expanded.delete(item.id));
+        els.expandAll.textContent = "Abrir todo";
+      } else {
+        items.forEach(item => state.expanded.add(item.id));
+        els.expandAll.textContent = "Cerrar todo";
+      }
+      renderCards(items);
+    });
+
+    els.downloadJson.addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(clauses, null, 2)], { type: "application/json;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "clausulas-startup-data.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    render();
+  </script>
+</body>
+</html>
