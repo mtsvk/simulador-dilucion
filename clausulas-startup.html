@@ -1,10 +1,13 @@
+Here is the full HTML document translated into English. All Spanish text within the content, script data, interface elements, and attributes has been translated while preserving the HTML structure, layout, styles, CSS variables, script functions, and JSON data structure.
+
+```html
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Glosario ACAFI de Cláusulas Startup | Term Sheet, SAFE, Mutuo y Pacto</title>
-  <meta name="description" content="Guía móvil basada en documentos ACAFI para entender y negociar cláusulas de term sheet, SAFE, KISS, mutuo convertible y pacto de accionistas." />
+  <title>ACAFI Startup Clauses Glossary | Term Sheet, SAFE, Loan, and Shareholders' Agreement</title>
+  <meta name="description" content="Mobile guide based on ACAFI documents to understand and negotiate clauses in term sheets, SAFEs, KISSes, convertible loans, and shareholders' agreements." />
   <style>
     :root {
       --bg: #f8fafc;
@@ -373,11 +376,11 @@
       white-space: nowrap;
     }
 
-    .tilt-inversionista { background: var(--investor-bg); color: var(--investor-ink); border-color: #c7d2fe; }
-    .tilt-fundador { background: var(--founder-bg); color: var(--founder-ink); border-color: #bbf7d0; }
+    .tilt-investor, .tilt-inversionista { background: var(--investor-bg); color: var(--investor-ink); border-color: #c7d2fe; }
+    .tilt-founder, .tilt-fundador { background: var(--founder-bg); color: var(--founder-ink); border-color: #bbf7d0; }
     .tilt-neutral { background: var(--neutral-bg); color: var(--neutral-ink); border-color: #e2e8f0; }
-    .tilt-minoria { background: var(--minority-bg); color: var(--minority-ink); border-color: #fde68a; }
-    .tilt-compania { background: var(--company-bg); color: var(--company-ink); border-color: #a5f3fc; }
+    .tilt-minority, .tilt-minoria { background: var(--minority-bg); color: var(--minority-ink); border-color: #fde68a; }
+    .tilt-company, .tilt-compania { background: var(--company-bg); color: var(--company-ink); border-color: #a5f3fc; }
 
     .chevron {
       color: #94a3b8;
@@ -440,8 +443,6 @@
       letter-spacing: .08em;
       text-transform: uppercase;
     }
-
-
 
     .source-note {
       margin-top: 9px;
@@ -575,889 +576,889 @@
 <body>
   <main class="shell">
     <section class="hero">
-      <p class="eyebrow">Term sheet · SAFE · mutuo convertible · pacto de accionistas</p>
-      <h1>Mapa de cláusulas startup</h1>
+      <p class="eyebrow">Term sheet · SAFE · convertible loan · shareholders' agreement</p>
+      <h1>Startup Clause Map</h1>
       <p>
-        Guía esquemática para entender qué hace cada cláusula, a quién favorece y cómo se puede negociar desde una posición pro fundador o pro inversionista.
+        Schematic guide to understanding what each clause does, who it favors, and how to negotiate it from a pro-founder or pro-investor stance.
       </p>
       <div class="stats">
-        <div class="stat"><strong id="totalCount">0</strong><span>cláusulas</span></div>
-        <div class="stat"><strong id="visibleCount">0</strong><span>visibles</span></div>
-        <div class="stat"><strong>2</strong><span>posturas</span></div>
+        <div class="stat"><strong id="totalCount">0</strong><span>clauses</span></div>
+        <div class="stat"><strong id="visibleCount">0</strong><span>visible</span></div>
+        <div class="stat"><strong>2</strong><span>stances</span></div>
       </div>
     </section>
 
-    <section class="toolbar" aria-label="Filtros">
+    <section class="toolbar" aria-label="Filters">
       <div class="searchbox">
         <span class="search-icon">⌕</span>
-        <input id="searchInput" type="search" placeholder="Buscar: drag, pay to play, cap, vesting..." autocomplete="off" />
+        <input id="searchInput" type="search" placeholder="Search: drag, pay to play, cap, vesting..." autocomplete="off" />
       </div>
-      <div id="categoryChips" class="chips" aria-label="Categorías"></div>
-      <div id="tiltChips" class="chips" aria-label="A quién favorece"></div>
+      <div id="categoryChips" class="chips" aria-label="Categories"></div>
+      <div id="tiltChips" class="chips" aria-label="Who it favors"></div>
     </section>
 
     <section class="grid">
       <section class="panel">
-        <p class="panel-title">◎ Lectura rápida de negociación</p>
+        <p class="panel-title">◎ Quick Negotiation Primer</p>
         <div class="mini-row">
-          <strong>Más pro fundador</strong>
-          <span>Sin antidilución · vesting acotado · materias reservadas limitadas · SAFE simple · exclusividad corta.</span>
+          <strong>Most Pro-Founder</strong>
+          <span>No anti-dilution · capped vesting · limited reserved matters · simple SAFE · short exclusivity.</span>
         </div>
         <div class="mini-row">
-          <strong>Zona razonable</strong>
-          <span>1x no participante · weighted average broad-based · pro rata limitado · reportes simples · drag con mayoría calificada.</span>
+          <strong>Reasonable Zone</strong>
+          <span>1x non-participating · broad-based weighted average · limited pro-rata · simple reporting · drag-along with supermajority.</span>
         </div>
         <div class="mini-row">
-          <strong>Más pro inversionista</strong>
-          <span>Full ratchet · veto individual · preferencia participante · no competencia amplia · garantías personales fuertes.</span>
+          <strong>Most Pro-Investor</strong>
+          <span>Full ratchet · individual veto · participating preference · broad non-compete · strong personal guarantees.</span>
         </div>
       </section>
 
       <section class="notice">
         <div>⚠️</div>
         <div>
-          <strong>Regla práctica</strong>
+          <strong>Practical Rule</strong>
           <p>
-            La cláusula no se evalúa sola. ACAFI insiste en equilibrar protección del inversionista con posición de los fundadores, ESOP, rondas futuras y velocidad de gestión. Una cláusula muy segura para el inversionista puede volver la compañía no financiable.
+            A clause is not evaluated in isolation. ACAFI emphasizes balancing investor protection with the founder position, ESOP, future rounds, and execution speed. A clause that is overly safe for the investor can make the company un-fundable.
           </p>
         </div>
       </section>
 
-      <section id="cards" class="grid" aria-label="Listado de cláusulas"></section>
+      <section id="cards" class="grid" aria-label="List of clauses"></section>
 
       <section id="emptyState" class="empty">
-        <strong>No hay resultados con esos filtros.</strong>
-        <span>Prueba con “drag”, “cap”, “mutuo”, “SAFE”, “información” o “IP”.</span>
+        <strong>No results match those filters.</strong>
+        <span>Try searching for “drag”, “cap”, “loan”, “SAFE”, “information”, or “IP”.</span>
       </section>
     </section>
 
     <footer class="footer">
-      <strong>Uso práctico:</strong> mapa pedagógico basado en documentos ACAFI revisados localmente. No reemplaza revisión legal de documentos definitivos ni valida por sí solo una reforma estatutaria, aumento de capital, SAFE, KISS, mutuo convertible, licencia o pacto de accionistas bajo ley chilena.
+      <strong>Practical use:</strong> educational map based on locally reviewed ACAFI documents. It does not replace legal review of definitive documents nor does it independently validate a statutory amendment, capital increase, SAFE, KISS, convertible loan, license, or shareholders' agreement under Chilean law.
     </footer>
   </main>
 
   <div class="float-actions">
-    <button id="expandAll" type="button">Abrir todo</button>
-    <button id="downloadJson" class="secondary" type="button">Descargar JSON</button>
+    <button id="expandAll" type="button">Expand all</button>
+    <button id="downloadJson" class="secondary" type="button">Download JSON</button>
   </div>
 
   <script id="clauses-data" type="application/json">
 [
   {
     "id": "principios-vc",
-    "title": "Filosofía VC: riesgo, minoría y velocidad",
-    "aka": "Principios ACAFI, alto riesgo / alto retorno, rondas sucesivas",
-    "category": "Estructura",
-    "stage": "Principios",
+    "title": "VC Philosophy: Risk, Minority, and Velocity",
+    "aka": "ACAFI Principles, high risk / high return, successive rounds",
+    "category": "Structure",
+    "stage": "Principles",
     "tilt": "Neutral",
-    "source": "Principios Filosóficos ACAFI",
-    "simple": "ACAFI parte de una idea clave: el venture capital invierte en empresas de alto potencial y alto riesgo, normalmente por rondas sucesivas, sin ahogar la gestión de los fundadores.",
-    "investor": "Necesita protecciones económicas, gobierno corporativo e información, porque invierte minoritariamente en una empresa riesgosa y todavía inmadura.",
-    "founder": "Debe conservar suficiente participación, incentivos y velocidad operativa; si el control queda demasiado bloqueado, la startup deja de ser financiable y ejecutable.",
+    "source": "ACAFI Philosophical Principles",
+    "simple": "ACAFI starts from a core premise: venture capital invests in high-potential, high-risk companies, usually through successive rounds, without suffocating founder management.",
+    "investor": "Requires economic protections, corporate governance, and information rights because they are making a minority investment in a risky and immature company.",
+    "founder": "Must retain sufficient equity, incentives, and operational velocity; if political control becomes too blocked, the startup ceases to be fundable and executable.",
     "negotiation": [
-      "Usar como regla mental que cada ronda puede tomar aproximadamente entre 10% y 30% del capital, según etapa, riesgo y monto.",
-      "Evitar protecciones que den seguridad de corto plazo al inversionista pero destruyan la capacidad de levantar rondas futuras.",
-      "Separar tres planos: economía de la inversión, control político y deberes de información."
+      "Use as a rule of thumb that each round may take roughly 10% to 30% of total equity, depending on stage, risk, and amount.",
+      "Avoid protections that grant short-term safety to the investor but destroy the ability to raise future rounds.",
+      "Separate three areas: economics of the investment, political control, and information duties."
     ],
     "redFlags": [
-      "Inversionista minoritario con poder de veto operativo total.",
-      "Fundador excesivamente diluido en etapa seed.",
-      "Pacto diseñado como si fuera una empresa tradicional y no una startup de crecimiento."
+      "Minority investor with complete operational veto power.",
+      "Founder excessively diluted at the seed stage.",
+      "Agreement designed as if it were a traditional company rather than a growth startup."
     ],
-    "founderPosition": "Defender participación, ESOP y velocidad de decisión; aceptar protecciones razonables, pero no vetos que paralicen la operación diaria.",
-    "investorPosition": "Pedir información, preferencias y materias protegidas proporcionales al ticket y a la etapa, sin impedir rondas futuras."
+    "founderPosition": "Defend equity, ESOP, and decision-making speed; accept reasonable protections, but not vetos that paralyze day-to-day operations.",
+    "investorPosition": "Request information rights, preferences, and protected matters proportional to ticket size and stage, without impeding future rounds."
   },
   {
     "id": "instrumento",
-    "title": "Tipo de instrumento",
-    "aka": "Term sheet, equity preferente, SAFE, KISS, mutuo convertible",
-    "category": "Estructura",
+    "title": "Type of Instrument",
+    "aka": "Term sheet, preferred equity, SAFE, KISS, convertible loan",
+    "category": "Structure",
     "stage": "Term sheet",
     "tilt": "Neutral",
-    "source": "Principios Filosóficos, Term Sheet, SAFE, KISS y Mutuo Convertible ACAFI",
-    "simple": "Define si el inversionista entra ahora como accionista o si entrega dinero hoy a cambio de un derecho futuro de conversión o adquisición de acciones.",
-    "investor": "Prefiere un instrumento que le dé claridad de conversión, derechos mínimos y protección si hay venta, liquidación, incumplimiento o nueva ronda.",
-    "founder": "Prefiere una estructura simple y rápida, que no obligue a reformar estatutos antes de tiempo ni entregue control político prematuro.",
+    "source": "ACAFI Philosophical Principles, Term Sheet, SAFE, KISS, and Convertible Loan",
+    "simple": "Defines whether the investor enters now as a shareholder or provides funds today in exchange for a future right to convert or acquire shares.",
+    "investor": "Prefers an instrument that offers conversion clarity, minimum rights, and protection in case of sale, liquidation, default, or a new round.",
+    "founder": "Prefers a simple, fast structure that doesn't force statutory amendments prematurely or grant premature political control.",
     "negotiation": [
-      "Equity preferente es más completo, pero exige suscripción de acciones, pacto y muchas veces reforma estatutaria.",
-      "SAFE y KISS sirven para financiar hoy sin fijar completamente la valorización, usando cap, descuento o eventos de conversión.",
-      "Mutuo convertible es deuda convertible: agrega interés, vencimiento, prepago, incumplimientos y opción de pago o conversión."
+      "Preferred equity is most comprehensive, but requires share subscription, agreement signing, and often statutory amendments.",
+      "SAFE and KISS allow financing today without fully fixing valuation, using caps, discounts, or conversion events.",
+      "Convertible loans are convertible debt: adding interest, maturity, prepayment, default terms, and payment or conversion options."
     ],
     "redFlags": [
-      "Usar SAFE como si ya fueran acciones emitidas.",
-      "Prometer preferencias sin reflejarlas en estatutos o pacto cuando corresponda.",
-      "No explicar al inversionista tradicional la diferencia entre deuda, equity y derecho futuro sobre equity."
+      "Treating a SAFE as if shares have already been issued.",
+      "Promising preferences without reflecting them in bylaws or agreement when required.",
+      "Failing to explain to traditional investors the difference between debt, equity, and future equity rights."
     ],
-    "founderPosition": "Usar convertible si la ronda es temprana o puente; dejar para una ronda institucional la arquitectura completa de acciones preferentes.",
-    "investorPosition": "Exigir que el instrumento diga qué pasa en ronda, venta, disolución, vencimiento, incumplimiento y futuras emisiones."
+    "founderPosition": "Use convertibles if the round is early or a bridge; reserve complete preferred share architecture for an institutional round.",
+    "investorPosition": "Require the instrument to state clearly what happens in a round, sale, dissolution, maturity, default, and future issuances."
   },
   {
     "id": "term-sheet",
-    "title": "Term sheet",
-    "aka": "Oferta preliminar, hoja de términos, binding / non-binding",
-    "category": "Estructura",
+    "title": "Term Sheet",
+    "aka": "Preliminary offer, letter of intent, binding / non-binding",
+    "category": "Structure",
     "stage": "Term sheet",
     "tilt": "Neutral",
-    "source": "Term Sheet ACAFI y Principios Filosóficos ACAFI",
-    "simple": "Resume los términos principales antes de entrar a documentos definitivos. Según el modelo ACAFI, normalmente no es vinculante salvo en puntos específicos como confidencialidad o exclusividad.",
-    "investor": "Le permite fijar condiciones económicas y de control antes de gastar tiempo y costos en due diligence y documentos definitivos.",
-    "founder": "Le permite saber si hay acuerdo real en lo esencial antes de entregar mucha información o cerrar opciones con otros inversionistas.",
+    "source": "ACAFI Term Sheet and ACAFI Philosophical Principles",
+    "simple": "Summarizes key terms before entering definitive agreements. Under the ACAFI model, it is typically non-binding except for specific items like confidentiality or exclusivity.",
+    "investor": "Allows setting economic and control terms before committing time and expense to due diligence and definitive documents.",
+    "founder": "Helps determine whether there is genuine agreement on core terms before disclosing sensitive info or closing options with other investors.",
     "negotiation": [
-      "Separar expresamente qué cláusulas son vinculantes y cuáles son solo base de negociación.",
-      "Incluir cap table pre y post cierre, monto de ronda, tipo de acciones, plazo de cierre y vigencia de la oferta.",
-      "No firmar un term sheet que parezca preliminar pero contenga obligaciones duras escondidas."
+      "Expressly separate binding clauses from those serving strictly as negotiation baselines.",
+      "Include pre- and post-closing cap tables, round size, share classes, target closing date, and offer validity.",
+      "Do not sign a term sheet that appears preliminary but conceals hard legal obligations."
     ],
     "redFlags": [
-      "Exclusividad larga sin obligación real de avanzar.",
-      "Term sheet sin cap table pre/post cierre.",
-      "Materias económicas importantes dejadas para ‘documentación definitiva’ sin acuerdo base."
+      "Long exclusivity without a real obligation to proceed.",
+      "Term sheet lacking pre- and post-closing cap tables.",
+      "Major economic terms deferred to 'definitive documentation' without baseline agreement."
     ],
-    "founderPosition": "Mantenerlo corto, claro y con obligaciones vinculantes acotadas: confidencialidad, exclusividad breve, gastos y ley aplicable.",
-    "investorPosition": "Usarlo para fijar preferencia de liquidación, directorio, derechos de información, restricciones de transferencia y condiciones de cierre."
+    "founderPosition": "Keep it short, clear, and with narrow binding terms: confidentiality, brief exclusivity, expenses, and governing law.",
+    "investorPosition": "Use it to lock in liquidation preference, board seats, information rights, transfer restrictions, and closing conditions."
   },
   {
     "id": "acciones-preferentes",
-    "title": "Acciones preferentes Seed",
-    "aka": "Serie Preferente Seed, Serie A, preferencias estatutarias",
-    "category": "Economía",
-    "stage": "Pacto / Estatutos",
-    "tilt": "Inversionista",
-    "source": "Term Sheet y Pacto de Accionistas ACAFI",
-    "simple": "Son acciones con derechos superiores a las ordinarias: preferencia de liquidación, designación de director, conversión, información y protecciones especiales.",
-    "investor": "Entra con una clase de acciones que reconoce el riesgo de su inversión y le da protección frente a venta, liquidación y decisiones estructurales.",
-    "founder": "Debe cuidar que las preferencias no transformen una participación minoritaria en control de facto de la compañía.",
+    "title": "Seed Preferred Shares",
+    "aka": "Series Seed Preferred, Series A, statutory preferences",
+    "category": "Economics",
+    "stage": "Agreement / Bylaws",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet and Shareholders' Agreement",
+    "simple": "Shares with superior rights to common stock: liquidation preference, director appointment, conversion rights, information, and protective provisions.",
+    "investor": "Enters with a share class recognizing investment risk, offering protection against sale, liquidation, and structural decisions.",
+    "founder": "Must ensure preferences do not turn a minority stake into de facto operational control of the company.",
     "negotiation": [
-      "Definir qué preferencias van en estatutos y cuáles solo en pacto.",
-      "Cuidar que los derechos preferentes desaparezcan o se reduzcan si el inversionista baja de cierto porcentaje fully diluted.",
-      "Coordinar conversión 1:1 a ordinarias y conversión automática en IPO u otros eventos."
+      "Define which preferences belong in statutory bylaws vs. exclusively in the shareholders' agreement.",
+      "Ensure preferred rights sunset or reduce if the investor drops below a specific fully diluted ownership threshold.",
+      "Coordinate 1:1 conversion to common stock and automatic conversion upon IPO or other qualified events."
     ],
     "redFlags": [
-      "Preferencias incompatibles con futuras rondas internacionales.",
-      "Derechos políticos permanentes aunque el inversionista ya tenga participación mínima.",
-      "No reformar estatutos cuando la preferencia realmente lo requiere."
+      "Preferences incompatible with future international investment rounds.",
+      "Permanent political rights even after an investor's stake becomes negligible.",
+      "Failure to amend statutory bylaws when a preference legally requires it."
     ],
-    "founderPosition": "Aceptar preferencias estándar, pero con umbrales mínimos, conversión clara y sin veto operativo excesivo.",
-    "investorPosition": "Pedir serie preferente con preferencia económica, información y materias protegidas mientras mantenga una participación relevante."
+    "founderPosition": "Accept standard preferences, but with minimum thresholds, clear conversion, and no excessive operational vetos.",
+    "investorPosition": "Request preferred stock with economic preference, information rights, and protective matters while holding a relevant stake."
   },
   {
     "id": "valuation-cap",
-    "title": "Valuation cap",
-    "aka": "Límite de valorización, valoración tope, CAP de conversión",
-    "category": "Economía",
-    "stage": "SAFE / KISS / Mutuo",
-    "tilt": "Inversionista",
-    "source": "KISS, SAFE y Mutuo Convertible ACAFI",
-    "simple": "Es el techo de valorización usado para calcular cuántas acciones recibirá el inversionista al convertir. Si la empresa sube mucho, el cap mejora la entrada del inversionista temprano.",
-    "investor": "Es su premio por entrar temprano: convierte a un precio por acción calculado con un techo, aunque la ronda futura valore más alto la empresa.",
-    "founder": "Un cap demasiado bajo puede regalar demasiado porcentaje futuro y complicar la ronda siguiente.",
+    "title": "Valuation Cap",
+    "aka": "Valuation ceiling, conversion cap",
+    "category": "Economics",
+    "stage": "SAFE / KISS / Loan",
+    "tilt": "Investor",
+    "source": "ACAFI KISS, SAFE, and Convertible Loan",
+    "simple": "The valuation ceiling used to calculate how many shares an investor receives upon conversion. If valuation skyrockets, the cap protects early investors.",
+    "investor": "Serves as reward for early risk: converts at a price per share based on the cap even if a future round values the startup higher.",
+    "founder": "A cap set too low can give away excessive future equity and complicate the subsequent funding round.",
     "negotiation": [
-      "Definir si el cálculo usa capitalización fully diluted e incluye pool de opciones reservado.",
-      "Aclarar si se aplica el menor entre cap y descuento, como ocurre en modelos convertibles.",
-      "Modelar la conversión con varios escenarios de ronda futura antes de firmar."
+      "Define whether calculation uses fully diluted capitalization and includes reserved option pools.",
+      "Clarify if the lower of the cap or discount applies, as is standard in convertible models.",
+      "Model conversion under multiple future round scenarios prior to signing."
     ],
     "redFlags": [
-      "Cap bajo más descuento alto más interés acumulado.",
-      "No definir qué se incluye en capitalización totalmente diluida.",
-      "Cap distinto para conversión automática, voluntaria y transacción corporativa sin entender sus efectos."
+      "Low cap combined with high discount and cumulative interest.",
+      "Failure to define what is included in fully diluted capitalization.",
+      "Varying caps for automatic, voluntary, or corporate transaction conversions without understanding the impact."
     ],
-    "founderPosition": "Subir el cap o compensarlo con un descuento menor; exigir definición limpia de fully diluted y exclusiones razonables.",
-    "investorPosition": "Fijar un cap suficientemente atractivo para compensar riesgo temprano, con cálculo claro y no manipulable."
+    "founderPosition": "Raise the cap or compensate with a lower discount; require a clean definition of fully diluted capital with reasonable exclusions.",
+    "investorPosition": "Fix an attractive cap to offset early risk, with a calculation formula that is clear and unmanipulable."
   },
   {
     "id": "discount",
-    "title": "Descuento de conversión",
-    "aka": "Tasa de descuento, precio de descuento",
-    "category": "Economía",
-    "stage": "SAFE / KISS / Mutuo",
-    "tilt": "Inversionista",
-    "source": "KISS, SAFE y Mutuo Convertible ACAFI",
-    "simple": "Permite convertir a un precio menor que el precio pagado por los nuevos inversionistas en la ronda futura.",
-    "investor": "Recibe mejor precio porque puso dinero antes, con más incertidumbre y sin todos los derechos de una ronda formal.",
-    "founder": "Aumenta la dilución y puede acumularse de forma pesada si además hay cap, intereses o pago preferente.",
+    "title": "Conversion Discount",
+    "aka": "Discount rate, discount price",
+    "category": "Economics",
+    "stage": "SAFE / KISS / Loan",
+    "tilt": "Investor",
+    "source": "ACAFI KISS, SAFE, and Convertible Loan",
+    "simple": "Allows converting at a price lower than the price paid by new investors in a future equity round.",
+    "investor": "Obtains a better price for providing capital earlier under higher uncertainty and without full round rights.",
+    "founder": "Increases equity dilution and can compound heavily if paired with caps, interest, or liquidation preferences.",
     "negotiation": [
-      "Definir si el inversionista recibe el menor precio entre cap y descuento, no ambos acumulados sin límite.",
-      "En mutuo convertible, revisar si el interés también se convierte y aumenta el monto base.",
-      "Explicar la fórmula en una tabla simple: inversión, precio ronda, descuento, acciones resultantes."
+      "Clarify that the investor receives the lower of the cap or discount price, not both stacked unboundedly.",
+      "For convertible loans, check whether accrued interest converts into shares, increasing base share count.",
+      "Illustrate the formula in a simple table: investment, round price, discount, resulting share count."
     ],
     "redFlags": [
-      "Descuento alto sin ronda calificada mínima.",
-      "Descuento más intereses más pago preferente muy agresivo.",
-      "No definir qué ocurre si nunca se levanta una ronda."
+      "High discount without a minimum qualified round threshold.",
+      "Aggressive combination of discount, interest, and preferential payout.",
+      "Failing to define what happens if a qualified round never occurs."
     ],
-    "founderPosition": "Descuento moderado, no acumulativo de manera abusiva y sujeto a una ronda real de financiamiento.",
-    "investorPosition": "Descuento claro y automático frente a ronda de financiamiento, con protección si la ronda se estructura para evitar la conversión."
+    "founderPosition": "Moderate discount, non-cumulatively structured, and strictly tied to a genuine equity financing round.",
+    "investorPosition": "Clear, automatic discount upon qualified financing, with protections if the round is structured to evade conversion."
   },
   {
     "id": "ronda-financiamiento",
-    "title": "Ronda de financiamiento / evento de conversión",
-    "aka": "Ronda calificada, próxima financiación, evento de conversión por financiamiento",
-    "category": "Conversión",
-    "stage": "SAFE / KISS / Mutuo",
+    "title": "Financing Round / Conversion Event",
+    "aka": "Qualified round, next financing, financing conversion event",
+    "category": "Conversion",
+    "stage": "SAFE / KISS / Loan",
     "tilt": "Neutral",
-    "source": "KISS, SAFE y Mutuo Convertible ACAFI",
-    "simple": "Es la ronda futura que gatilla la conversión automática del SAFE, KISS o mutuo. Debe ser una transacción real de levantamiento de capital, no una simulación interna.",
-    "investor": "Quiere que la conversión ocurra cuando entra capital nuevo relevante y que no se manipule el umbral para convertirlo en malas condiciones.",
-    "founder": "Quiere que el umbral sea alcanzable y no bloquee indefinidamente la conversión o el cierre de la ronda futura.",
+    "source": "ACAFI KISS, SAFE, and Convertible Loan",
+    "simple": "The future round that triggers automatic conversion of a SAFE, KISS, or loan. Must represent a genuine capital raise, not an insider simulation.",
+    "investor": "Wants conversion triggered when meaningful new capital enters and demands protection against threshold manipulation.",
+    "founder": "Wants a realistic threshold that does not indefinitely block conversion or delay closing future rounds.",
     "negotiation": [
-      "Definir monto mínimo de ronda, tipo de acciones y si incluye o excluye la conversión de deuda o SAFEs existentes.",
-      "Regular conversión automática, conversión voluntaria y conversión antes de venta o cambio de control.",
-      "Notificar al inversionista con anticipación razonable sobre los términos de la ronda."
+      "Define minimum round size, share class, and whether it includes or excludes existing debt/SAFE conversion.",
+      "Govern automatic conversion, voluntary conversion, and conversion prior to sale or change of control.",
+      "Provide reasonable advance notification of round terms to the investor."
     ],
     "redFlags": [
-      "Ronda mínima demasiado baja que permite manipular la conversión.",
-      "Ronda mínima demasiado alta que deja al inversionista colgado años.",
-      "No decir si la ronda puede ser en una matriz o holding extranjero."
+      "Minimum round set too low, enabling artificial conversion manipulation.",
+      "Minimum round set too high, leaving investors stranded for years.",
+      "Failure to clarify if the round can occur at a foreign parent/holding level."
     ],
-    "founderPosition": "Umbral realista, conversión automática solo ante ronda seria y flexibilidad para convertir por acuerdo si conviene al cierre.",
-    "investorPosition": "Evento definido objetivamente, con derecho a documentos equivalentes a los nuevos inversionistas y protección si hay venta antes de la ronda."
+    "founderPosition": "Realistic threshold, automatic conversion only upon a serious round, and flexibility to convert by agreement if beneficial.",
+    "investorPosition": "Objectively defined event with rights to documentation equivalent to new investors, plus pre-round sale protection."
   },
   {
     "id": "safe",
     "title": "SAFE",
-    "aka": "Simple Agreement for Future Equity, acciones futuras",
-    "category": "Conversión",
+    "aka": "Simple Agreement for Future Equity",
+    "category": "Conversion",
     "stage": "SAFE",
-    "tilt": "Fundador",
-    "source": "Modelo SAFE Acciones Ordinarias y Modelo SAFE Acciones Preferentes ACAFI",
-    "simple": "Es un derecho futuro sobre acciones. Según el modelo ACAFI, antes de convertir no da voto ni dividendos ni convierte al inversionista en accionista.",
-    "investor": "Quiere que el SAFE tenga cap, descuento, eventos de liquidez/disolución y derecho pro rata después de la ronda.",
-    "founder": "Es más liviano que deuda convertible porque no necesariamente tiene interés, vencimiento ni presión de pago como mutuo.",
+    "tilt": "Founder",
+    "source": "ACAFI Model SAFE Common Shares and Model SAFE Preferred Shares",
+    "simple": "A right to future equity. Under the ACAFI model, prior to conversion it grants no voting rights, dividends, or shareholder status.",
+    "investor": "Wants the SAFE to include a cap, discount, liquidity/dissolution events, and post-conversion pro-rata rights.",
+    "founder": "Lighter than convertible debt because it carries no interest rate, maturity date, or repayment pressure like a loan.",
     "negotiation": [
-      "Decidir si al convertir recibirá acciones ordinarias, preferentes o preferentes SAFE con diferencias en liquidación y antidilución.",
-      "Regular qué pasa en evento de liquidez: pago del precio de compra o conversión por precio de liquidez.",
-      "Dejar claro que la emisión de acciones requiere actos corporativos posteriores."
+      "Decide if conversion yields common stock, preferred stock, or SAFE preferred stock with distinct liquidation/anti-dilution terms.",
+      "Detail liquidity event terms: purchase price payout vs. conversion at the liquidity price.",
+      "Explicitly state that share issuance requires subsequent corporate actions."
     ],
     "redFlags": [
-      "Venderlo como si fuera una acción actual.",
-      "No regular evento de disolución o liquidez antes de la ronda.",
-      "No exigir adhesión futura al pacto de accionistas al momento de convertir."
+      "Marketing a SAFE as if it grants current equity ownership.",
+      "Failing to detail pre-round dissolution or liquidity event payouts.",
+      "Omitting mandatory execution of the shareholders' agreement upon conversion."
     ],
-    "founderPosition": "Útil para ronda temprana: mantenerlo simple, sin deuda ni vencimiento, con cap/descuento razonables y documentos futuros estándar.",
-    "investorPosition": "Pedir cap, descuento, evento de liquidez, preferencia en disolución y derecho pro rata post conversión."
+    "founderPosition": "Ideal for early financing: keep it simple, without debt or maturity, with fair caps/discounts and standard future docs.",
+    "investorPosition": "Request cap, discount, liquidity event coverage, dissolution preference, and post-conversion pro-rata rights."
   },
   {
     "id": "kiss",
     "title": "KISS",
-    "aka": "Keep It Simple Security, híbrido convertible",
-    "category": "Conversión",
+    "aka": "Keep It Simple Security, convertible hybrid",
+    "category": "Conversion",
     "stage": "KISS",
-    "tilt": "Inversionista",
-    "source": "Modelo KISS ACAFI",
-    "simple": "Es un instrumento convertible que en el modelo ACAFI combina precio de compra, cap, descuento, próxima ronda, operación corporativa, vencimiento y ciertos derechos del inversionista principal.",
-    "investor": "Tiene más protecciones que un SAFE simple: derechos de información, posible observador, pago en operación corporativa y conversión al vencimiento.",
-    "founder": "Puede ser útil, pero es más pesado que un SAFE y puede acercarse a una deuda convertible con más obligaciones.",
+    "tilt": "Investor",
+    "source": "ACAFI Model KISS",
+    "simple": "A convertible instrument combining purchase price, cap, discount, next-round rules, corporate events, maturity, and major investor rights under ACAFI.",
+    "investor": "Offers more protections than a basic SAFE: information rights, potential observer seats, corporate sale payouts, and maturity conversion.",
+    "founder": "Useful tool, but heavier than a SAFE and closer in burden to convertible debt obligations.",
     "negotiation": [
-      "Revisar si hay pago 1x o 2x en operación corporativa antes de conversión.",
-      "Definir quién es inversionista principal y qué derechos especiales recibe.",
-      "Acordar si las modificaciones pueden aprobarse por mayoría de tenedores KISS o requieren consentimiento individual."
+      "Review whether a 1x or 2x payout applies in corporate transactions prior to conversion.",
+      "Define who qualifies as a Major Investor and what special rights they receive.",
+      "Specify whether amendments require majority holder approval or individual consent."
     ],
     "redFlags": [
-      "Derechos de observador o información excesivos para tickets pequeños.",
-      "Pago preferente alto en venta temprana que deja sin retorno a fundadores.",
-      "Transferibilidad amplia del KISS sin control de la compañía."
+      "Excessive observer or information rights granted for small check sizes.",
+      "High preferential payouts upon early sale that strip founder returns.",
+      "Broad transferability of the KISS without company approval."
     ],
-    "founderPosition": "Usarlo solo si se entiende bien; limitar derechos especiales al inversionista principal y evitar pagos preferentes desproporcionados.",
-    "investorPosition": "Asegurar conversión por cap/descuento, derechos de información, protección en operación corporativa y capacidad de modificar por mayoría."
+    "founderPosition": "Use only if thoroughly understood; limit special rights to Major Investors and avoid disproportionate payout multipliers.",
+    "investorPosition": "Ensure conversion via cap/discount, information rights, corporate transaction protection, and majority amendment capability."
   },
   {
     "id": "mutuo-convertible",
-    "title": "Mutuo convertible",
-    "aka": "Nota convertible, deuda convertible",
-    "category": "Conversión",
-    "stage": "Mutuo",
-    "tilt": "Inversionista",
-    "source": "Modelo Mutuo Convertible ACAFI",
-    "simple": "Es deuda que puede transformarse en acciones. A diferencia de un SAFE, tiene capital adeudado, intereses, vencimiento, eventos de incumplimiento y reglas de pago o conversión.",
-    "investor": "Tiene un crédito exigible si no convierte y, además, puede capturar upside mediante conversión con cap o descuento.",
-    "founder": "Es más familiar para inversionistas tradicionales, pero mete presión de deuda, vencimiento e incumplimiento sobre una startup temprana.",
+    "title": "Convertible Loan",
+    "aka": "Convertible note, debt instrument",
+    "category": "Conversion",
+    "stage": "Loan",
+    "tilt": "Investor",
+    "source": "ACAFI Model Convertible Loan",
+    "simple": "Debt that can convert into shares. Unlike a SAFE, it has principal debt, interest, maturity, default events, and repayment or conversion rules.",
+    "investor": "Holds an enforceable claim if conversion does not occur, while retaining equity upside through cap/discount conversion.",
+    "founder": "Familiar to traditional investors, but imposes debt pressure, maturity deadlines, and default risks on early-stage startups.",
     "negotiation": [
-      "Definir interés, fecha de vencimiento, prórrogas y si el prepago requiere autorización del inversionista.",
-      "Regular conversión automática por financiamiento, conversión voluntaria al vencimiento y conversión/pago en transacción corporativa.",
-      "Limitar eventos de incumplimiento a supuestos materiales y con plazos de cura razonables."
+      "Define interest rate, maturity date, extension options, and whether prepayment requires investor consent.",
+      "Regulate automatic financing conversion, voluntary maturity conversion, and corporate transaction payout/conversion terms.",
+      "Limit default events strictly to material breaches with fair cure periods."
     ],
     "redFlags": [
-      "Vencimiento corto sin capacidad real de pago.",
-      "Renovación automática indefinida solo a favor del fondo.",
-      "Eventos de incumplimiento demasiado amplios o gatillados por formalidades menores."
+      "Short maturity date without realistic cash repayment capability.",
+      "Automatic renewal rights granted exclusively to the fund.",
+      "Broad default clauses triggered by trivial administrative formalities."
     ],
-    "founderPosition": "Usarlo como puente si es necesario; limitar interés, vencimiento y default, y empujar conversión antes que pago de caja.",
-    "investorPosition": "Mantener deuda exigible, interés, restricciones de uso de fondos, eventos de incumplimiento y derecho de conversión."
+    "founderPosition": "Use as a bridge if necessary; cap interest, extend maturity, limit defaults, and push conversion over cash drains.",
+    "investorPosition": "Maintain enforceable debt, interest, use-of-proceeds limits, default events, and conversion options."
   },
   {
     "id": "uso-fondos",
-    "title": "Uso del monto de inversión",
-    "aka": "Use of proceeds, restricciones de uso de fondos",
-    "category": "Cierre",
-    "stage": "Mutuo / Term sheet",
-    "tilt": "Inversionista",
-    "source": "Modelo Mutuo Convertible ACAFI",
-    "simple": "Define para qué puede usarse la plata. El modelo de mutuo ACAFI contempla restricciones como no pagar deuda antigua o no financiar aumentos de sueldo de emprendedores fuera de lo acordado.",
-    "investor": "Quiere que su plata financie crecimiento, producto, ventas o runway, no que tape pasivos previos o retiros de fundadores.",
-    "founder": "Necesita flexibilidad para operar, contratar y sobrevivir; una lista demasiado rígida puede hacer inútil el financiamiento.",
+    "title": "Use of Proceeds",
+    "aka": "Use of funds, expenditure restrictions",
+    "category": "Closing",
+    "stage": "Loan / Term sheet",
+    "tilt": "Investor",
+    "source": "ACAFI Model Convertible Loan",
+    "simple": "Defines permissible uses of capital. The ACAFI loan model includes restrictions preventing repayment of old debts or unapproved founder salary increases.",
+    "investor": "Wants capital deployed into growth, product, sales, or runway—not clearing past liabilities or funding founder withdrawals.",
+    "founder": "Needs operational flexibility to hire, pivot, and execute; overly rigid restrictions can cripple operations.",
     "negotiation": [
-      "Incluir presupuesto de uso de fondos por categorías, no microgestión por gasto individual.",
-      "Permitir capital de trabajo ordinario y pagos operacionales normales.",
-      "Tratar usos prohibidos como incumplimiento solo si son materiales."
+      "Include a categorical budget breakdown rather than micro-managing individual expenses.",
+      "Permit ordinary working capital deployment and standard operational payments.",
+      "Treat unauthorized uses as defaults only when material in scale."
     ],
     "redFlags": [
-      "Prohibición genérica que impide usar fondos para operación diaria.",
-      "Pagar deudas relacionadas sin disclosure.",
-      "Usar la ronda para retiros, bonos o sueldos extraordinarios no informados."
+      "Generic prohibitions blocking standard day-to-day operations.",
+      "Paying off undisclosed related-party debts.",
+      "Deploying investment for undisclosed bonuses, distributions, or extraordinary salary hikes."
     ],
-    "founderPosition": "Aceptar restricciones contra abusos, pero mantener flexibilidad operacional dentro del presupuesto aprobado.",
-    "investorPosition": "Restringir pago de deuda antigua, partes relacionadas y gastos fuera del giro o del presupuesto."
+    "founderPosition": "Accept safeguards against abuse, but preserve full operational flexibility within the approved budget.",
+    "investorPosition": "Restrict repayment of legacy debts, related-party transfers, and expenditures outside the core business plan."
   },
   {
     "id": "preferencia-liquidacion",
-    "title": "Preferencia de liquidación",
-    "aka": "Liquidation preference, preferencia en venta o disolución",
-    "category": "Economía",
-    "stage": "Pacto / Term sheet",
-    "tilt": "Inversionista",
-    "source": "Term Sheet y Pacto de Accionistas ACAFI",
-    "simple": "Da a las acciones preferentes derecho a cobrar antes que las ordinarias en venta, liquidación, disolución, procedimiento concursal o enajenación relevante.",
-    "investor": "Le asegura recuperar al menos el monto de adquisición original o recibir lo que le correspondería a prorrata, según cuál sea mayor.",
-    "founder": "Si se combina con múltiplos o participación adicional, puede absorber todo el valor en una venta mediana.",
+    "title": "Liquidation Preference",
+    "aka": "Liquidation, sale, or dissolution preference",
+    "category": "Economics",
+    "stage": "Agreement / Term sheet",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet and Shareholders' Agreement",
+    "simple": "Grants preferred shares the right to collect proceeds before common shares in a sale, liquidation, dissolution, bankruptcy, or asset sale.",
+    "investor": "Guarantees recovering at least the initial investment amount or receiving a pro-rata share, whichever is higher.",
+    "founder": "If combined with participating features or high multipliers, can wipe out founder returns in modest exits.",
     "negotiation": [
-      "La fórmula ACAFI base es tipo 1x no participante: mayor entre inversión original o prorrata.",
-      "Evitar múltiplos altos salvo situaciones excepcionales.",
-      "Modelar ventas bajas, medias y altas para ver quién recibe cuánto."
+      "Standard ACAFI baseline is 1x non-participating: higher of original investment or pro-rata.",
+      "Avoid participating preferences or high multipliers except under distressed conditions.",
+      "Model payout waterfalls across low, medium, and high exit outcomes."
     ],
     "redFlags": [
-      "Preferencia participante sin límite.",
-      "Múltiplos de 2x o 3x en seed sin justificación.",
-      "Preferencias acumuladas entre rondas que dejan a ordinarias sin retorno."
+      "Uncapped participating preferences.",
+      "Unjustified 2x or 3x multipliers at the seed stage.",
+      "Stacked preferences across rounds that leave common stock with zero return."
     ],
-    "founderPosition": "Preferencia 1x no participante, sin acumulación, sin múltiplos y con conversión voluntaria a ordinarias cuando convenga.",
-    "investorPosition": "Al menos recuperación preferente del monto invertido antes de distribuciones a acciones ordinarias."
+    "founderPosition": "Insist on 1x non-participating preference, no stacking, no multipliers, and voluntary conversion to common when optimal.",
+    "investorPosition": "Require preference ensuring capital recovery prior to any distribution to common equity holders."
   },
   {
     "id": "directorio-observador",
-    "title": "Directorio y observador",
-    "aka": "Elección de directores, board seat, observer rights",
-    "category": "Gobierno",
-    "stage": "Pacto / Term sheet",
-    "tilt": "Inversionista",
-    "source": "Term Sheet, Pacto de Accionistas y KISS ACAFI",
-    "simple": "Permite al inversionista nombrar un director o participar como observador. En modelos ACAFI, este derecho suele depender de mantener un porcentaje mínimo fully diluted.",
-    "investor": "Busca visibilidad, influencia y acceso a decisiones estratégicas.",
-    "founder": "Debe evitar que un ticket pequeño capture control o vuelva lenta la gestión diaria.",
+    "title": "Board Seat and Observer Rights",
+    "aka": "Director election, board seat, observer rights",
+    "category": "Governance",
+    "stage": "Agreement / Term sheet",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet, Shareholders' Agreement, and KISS",
+    "simple": "Allows the investor to appoint a board director or participate as a non-voting observer. In ACAFI models, this right requires holding a minimum equity percentage.",
+    "investor": "Seeks governance visibility, strategic influence, and participation in high-level decisions.",
+    "founder": "Must prevent small check sizes from seizing governance control or slowing operational execution.",
     "negotiation": [
-      "Amarrar el derecho de designación a un umbral mínimo, por ejemplo 10% o porcentaje relevante.",
-      "Un observador con voz pero sin voto puede ser suficiente en etapas tempranas.",
-      "Regular confidencialidad y conflictos si el fondo ve compañías competidoras."
+      "Tie appointment rights to maintaining a specific fully diluted threshold (e.g., 10%+).",
+      "A non-voting observer seat often suffices for early-stage check sizes.",
+      "Define confidentiality and conflict rules if the investor backs competing startups."
     ],
     "redFlags": [
-      "Director o veto para inversionista muy minoritario.",
-      "Observador con poderes de director disfrazados.",
-      "No reconocer deberes fiduciarios de directores bajo ley chilena."
+      "Board seat or veto rights granted to a minor investor.",
+      "Observer seats disguised with formal director voting powers.",
+      "Failing to recognize director fiduciary duties under Chilean law."
     ],
-    "founderPosition": "Preferir observador al inicio o director sujeto a umbral; reservar gestión diaria para administración/fundadores.",
-    "investorPosition": "Pedir asiento u observador con información de directorio y participación en decisiones estratégicas."
+    "founderPosition": "Prefer observer seats early on, or board seats tied to ownership thresholds; preserve day-to-day management for founders.",
+    "investorPosition": "Request a board seat or observer with full board access and vote on strategic decisions."
   },
   {
     "id": "materias-fundamentales",
-    "title": "Materias fundamentales",
-    "aka": "Protective provisions, vetos, materias reservadas",
-    "category": "Gobierno",
-    "stage": "Pacto / Term sheet",
-    "tilt": "Inversionista",
-    "source": "Pacto de Accionistas ACAFI, Anexo de Materias Fundamentales",
-    "simple": "Son decisiones que requieren aprobación especial de las acciones preferentes, del director designado por ellas o de una mayoría calificada.",
-    "investor": "Protege contra cambios estructurales: deuda relevante, partes relacionadas, cambio de giro, venta de activos, modificación de preferencias, emisión de valores superiores o aumentos de capital.",
-    "founder": "Si la lista es muy amplia, el inversionista termina administrando sin operar la empresa.",
+    "title": "Reserved Matters / Protective Provisions",
+    "aka": "Protective provisions, vetos, reserved matters",
+    "category": "Governance",
+    "stage": "Agreement / Term sheet",
+    "tilt": "Investor",
+    "source": "ACAFI Shareholders' Agreement, Reserved Matters Annex",
+    "simple": "Key decisions requiring special approval from preferred shareholders, their designated director, or a qualified supermajority.",
+    "investor": "Protects against structural risks: debt issuance, related-party deals, business pivots, asset sales, share preference modifications, or cap increases.",
+    "founder": "If list is overly broad, the investor effectively manages operations without running the company.",
     "negotiation": [
-      "Separar materias de junta, directorio y gestión ordinaria.",
-      "Fijar umbrales monetarios para deuda, garantías, obligaciones y transacciones relacionadas.",
-      "Excluir curso ordinario, capital de trabajo y presupuesto anual aprobado."
+      "Separate shareholder-level, board-level, and operational management decisions.",
+      "Establish explicit monetary thresholds for debt, guarantees, liabilities, and related-party deals.",
+      "Exclude ordinary business operations, working capital, and approved annual budgets."
     ],
     "redFlags": [
-      "Veto individual para cualquier gasto o contratación.",
-      "Materias reservadas sin umbral económico.",
-      "Bloqueo de ESOP, contratación de ejecutivos o financiamiento ordinario sin mecanismo de solución."
+      "Individual veto power over minor spending or hiring decisions.",
+      "Reserved matters lacking monetary thresholds.",
+      "Vetos blocking ESOPs, executive hiring, or standard working capital without deadlock resolution."
     ],
-    "founderPosition": "Materias acotadas a decisiones estructurales y con umbrales; nada de veto operativo cotidiano.",
-    "investorPosition": "Veto sobre deuda, emisión de acciones preferentes superiores, venta, fusión, cambio de giro, partes relacionadas, IP relevante y modificación de preferencias."
+    "founderPosition": "Limit reserved matters strictly to major structural decisions with explicit dollar thresholds; eliminate operational vetos.",
+    "investorPosition": "Maintain veto rights over debt, senior share issuances, M&A, pivots, related-party deals, IP transfers, and charter edits."
   },
   {
     "id": "informacion",
-    "title": "Derechos de información",
-    "aka": "Estados financieros, reportes mensuales, KPIs, gestión",
-    "category": "Gobierno",
-    "stage": "Pacto / KISS / Mutuo",
-    "tilt": "Inversionista",
-    "source": "Term Sheet, Pacto de Accionistas, KISS y Mutuo Convertible ACAFI",
-    "simple": "Obliga a la sociedad a entregar estados financieros y reportes de gestión. El modelo ACAFI usa umbrales como tener más de 5% del capital para activar reportes completos.",
-    "investor": "Necesita monitorear caja, ingresos, hitos y contingencias para proteger su inversión.",
-    "founder": "Debe evitar una carga administrativa imposible para una startup sin equipo financiero robusto.",
+    "title": "Information Rights",
+    "aka": "Financial statements, monthly reports, KPIs, management reports",
+    "category": "Governance",
+    "stage": "Agreement / KISS / Loan",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet, Shareholders' Agreement, KISS, and Convertible Loan",
+    "simple": "Obligates the company to deliver financial statements and management updates. ACAFI models use ownership thresholds (e.g., >5%) to unlock full reporting.",
+    "investor": "Needs visibility into cash, revenue, runway, milestones, and liabilities to monitor investment health.",
+    "founder": "Must avoid administrative reporting burdens beyond early-stage internal finance capabilities.",
     "negotiation": [
-      "Reportes anuales auditados/no auditados, trimestrales y carta mensual pueden graduarse según etapa.",
-      "Usar un formato simple: caja, runway, ingresos, burn, hitos, deuda, contratación y riesgos.",
-      "Limitar información sensible frente a inversionistas que también miran competidores."
+      "Graduate requirements by stage: annual financials (audited/unaudited), quarterly updates, and concise monthly updates.",
+      "Standardize reporting structure: cash, runway, revenue, burn rate, milestones, debt, hires, and risks.",
+      "Restrict sensitive disclosures when dealing with investors holding competing portfolio assets."
     ],
     "redFlags": [
-      "Reportes complejos sin capacidad interna para producirlos.",
-      "Información ilimitada a todos los inversionistas, aunque tengan tickets pequeños.",
-      "No proteger información competitiva o confidencial."
+      "Demanding complex audit reporting beyond current operational capacity.",
+      "Unrestricted reporting rights granted to minor check sizes.",
+      "Failing to safeguard commercially sensitive competitive data."
     ],
-    "founderPosition": "Reportes estandarizados y proporcionales; derechos completos solo para inversionistas sobre umbral relevante.",
-    "investorPosition": "Estados financieros, gestión mensual, caja y liquidez, más información razonable para seguimiento."
+    "founderPosition": "Standardized, stage-appropriate reporting; complete information rights limited to investors above a key equity threshold.",
+    "investorPosition": "Regular financial statements, monthly updates, cash/runway reporting, and reasonable inspection access."
   },
   {
     "id": "pro-rata",
-    "title": "Pro rata / suscripción preferente futura",
-    "aka": "Derecho a mantener participación, derecho de suscripción preferente",
-    "category": "Protección",
-    "stage": "SAFE / Pacto",
-    "tilt": "Inversionista",
-    "source": "SAFE, Pacto de Accionistas y Principios Filosóficos ACAFI",
-    "simple": "Permite al inversionista participar en futuras emisiones para mantener su porcentaje o adquirir a prorrata acciones nuevas.",
-    "investor": "Quiere no diluirse si la empresa funciona y levanta rondas mejores.",
-    "founder": "Debe cuidar que todos los antiguos inversionistas no bloqueen la entrada de un lead investor nuevo.",
+    "title": "Pro-Rata / Preemptive Rights",
+    "aka": "Right to maintain ownership, subscription preference",
+    "category": "Protection",
+    "stage": "SAFE / Agreement",
+    "tilt": "Investor",
+    "source": "ACAFI SAFE, Shareholders' Agreement, and Philosophical Principles",
+    "simple": "Grants the investor the right to participate in future share issuances to maintain their percentage ownership or acquire pro-rata shares.",
+    "investor": "Protects against equity dilution as the startup grows and raises larger subsequent rounds.",
+    "founder": "Must prevent legacy investors from blocking allocations needed for a new lead investor.",
     "negotiation": [
-      "Limitar el derecho a accionistas mayoritarios o inversionistas sobre cierto umbral.",
-      "Fijar plazos cortos de ejercicio y derecho de acrecer si otros no participan.",
-      "Coordinarlo con derechos preferentes legales/estatutarios en SpA."
+      "Restrict pro-rata rights to Major Investors or those meeting an equity threshold.",
+      "Set short exercise windows and oversubscription rights for participating holders.",
+      "Coordinate with statutory preemptive rights under Chilean SpA law."
     ],
     "redFlags": [
-      "Pro rata ilimitado para todos los tickets chicos.",
-      "Derecho sin plazo de ejercicio.",
-      "Impedir crear un ESOP o cerrar una ronda estratégica."
+      "Uncapped pro-rata rights granted across small check sizes.",
+      "Pro-rata rights lacking explicit exercise timeframes.",
+      "Impeding the creation of an ESOP or closing a strategic investment round."
     ],
-    "founderPosition": "Pro rata limitado por umbral, con carve-outs para ESOP, lead investor y alianzas estratégicas.",
-    "investorPosition": "Derecho claro a participar en rondas futuras y mantener porcentaje fully diluted."
+    "founderPosition": "Limit pro-rata rights by ownership threshold, adding carve-outs for ESOPs, lead investors, and strategic partners.",
+    "investorPosition": "Clear right to participate in future equity rounds and maintain fully diluted percentage ownership."
   },
   {
     "id": "rofr",
-    "title": "Derecho de adquisición preferente / ROFR",
-    "aka": "Derecho de primer rechazo, primera opción, oferta interna",
-    "category": "Transferencias",
-    "stage": "Pacto / Term sheet",
-    "tilt": "Compañía",
-    "source": "Term Sheet y Pacto de Accionistas ACAFI",
-    "simple": "Antes de vender acciones a un tercero, el accionista debe ofrecerlas primero a la sociedad y/o a los demás accionistas, normalmente a prorrata.",
-    "investor": "Evita que entren terceros indeseados o competidores a la cap table.",
-    "founder": "Reduce liquidez y puede hacer lenta una venta secundaria legítima.",
+    "title": "Right of First Refusal (ROFR)",
+    "aka": "First refusal right, internal purchase option",
+    "category": "Transfers",
+    "stage": "Agreement / Term sheet",
+    "tilt": "Company",
+    "source": "ACAFI Term Sheet and Shareholders' Agreement",
+    "simple": "Before selling shares to a third party, a shareholder must offer them to the company and/or remaining shareholders, typically pro-rata.",
+    "investor": "Prevents unwanted third parties or direct competitors from entering the cap table.",
+    "founder": "Reduces share liquidity and can slow down legitimate secondary sales.",
     "negotiation": [
-      "Definir orden de preferencia: sociedad primero, luego accionistas mayoritarios o todos los accionistas.",
-      "Fijar plazos de oferta, aceptación y cierre; el modelo ACAFI contempla plazos breves y cierre posterior.",
-      "Exigir que el tercero adhiera al pacto antes de adquirir."
+      "Define priority order: company first, followed by major shareholders or all shareholders.",
+      "Establish strict notice, acceptance, and closing windows; ACAFI recommends concise timeframes.",
+      "Require the purchasing third party to sign a joinder to the shareholders' agreement."
     ],
     "redFlags": [
-      "Plazos demasiado largos que matan cualquier venta.",
-      "No exigir adhesión del comprador al pacto.",
-      "ROFR contradictorio con tag along o drag along."
+      "Excessively long response windows that kill secondary transactions.",
+      "Failing to require buyer joinder to the shareholders' agreement.",
+      "ROFR clauses that conflict directly with tag-along or drag-along terms."
     ],
-    "founderPosition": "Aceptar control de cap table, pero con plazos cortos y transferencias permitidas a vehículos controlados.",
-    "investorPosition": "ROFR fuerte para sociedad y accionistas relevantes, con adhesión obligatoria del tercero."
+    "founderPosition": "Accept cap table controls, but demand short notice windows and permitted transfer exemptions for personal holding vehicles.",
+    "investorPosition": "Strong ROFR for company and major holders, coupled with mandatory joinder by any incoming buyer."
   },
   {
     "id": "tag-along",
-    "title": "Tag along",
-    "aka": "Derecho de acompañamiento, venta conjunta, tragalón",
-    "category": "Salida",
-    "stage": "Pacto / Term sheet",
-    "tilt": "Minoría",
-    "source": "Term Sheet y Pacto de Accionistas ACAFI",
-    "simple": "Si un accionista relevante recibe una oferta de venta, los demás pueden vender junto con él, normalmente a prorrata y en los mismos términos.",
-    "investor": "Evita quedar atrapado si el fundador o accionista controlador vende su posición a un tercero.",
-    "founder": "Puede limitar ventas parciales o reorganizaciones si se gatilla ante cualquier oferta mínima.",
+    "title": "Tag-Along Rights",
+    "aka": "Co-sale right, joint sale right",
+    "category": "Exit",
+    "stage": "Agreement / Term sheet",
+    "tilt": "Minority",
+    "source": "ACAFI Term Sheet and Shareholders' Agreement",
+    "simple": "If a major shareholder sells their stake, minority shareholders can join the deal under identical terms and price, typically pro-rata.",
+    "investor": "Prevents being stranded if founders or controlling shareholders exit the business.",
+    "founder": "Can complicate partial liquidity transactions or restructurings if triggered by minor transfers.",
     "negotiation": [
-      "Definir quién gatilla el tag: accionistas ordinarios, fundadores, mayoritarios o cualquier accionista.",
-      "Establecer plazo de ejercicio, por ejemplo 15 días desde notificación.",
-      "Coordinarlo con ROFR y drag para que no se pisen entre sí."
+      "Define who triggers tag-along: common holders, founders, major shareholders, or any selling holder.",
+      "Establish explicit exercise windows (e.g., 15 days from notice).",
+      "Harmonize with ROFR and drag-along provisions to avoid mechanical conflicts."
     ],
     "redFlags": [
-      "Tag por ventas pequeñas sin cambio real de control.",
-      "No regular si la venta es conjunta, separada o proporcional.",
-      "Silencio sobre qué ocurre si nadie responde dentro del plazo."
+      "Tag-along triggered by minor sales that don't shift company control.",
+      "Failing to specify whether co-sale is full, partial, or proportional.",
+      "Unclear outcomes if minority holders fail to respond within the notice period."
     ],
-    "founderPosition": "Limitarlo a ventas relevantes, cambio de control o ventas de fundadores; excluir transferencias permitidas.",
-    "investorPosition": "Tag robusto frente a venta de fundadores o mayoritarios, en los mismos términos ofrecidos por el tercero."
+    "founderPosition": "Limit scope to major transfers or change-of-control deals by founders; exempt permitted family/holding transfers.",
+    "investorPosition": "Robust tag-along rights covering founder and majority sales under identical pricing and terms."
   },
   {
     "id": "drag-along",
-    "title": "Drag along",
-    "aka": "Derecho de arrastre, venta forzada, dragalón",
-    "category": "Salida",
-    "stage": "Pacto / Term sheet",
-    "tilt": "Inversionista",
-    "source": "Term Sheet y Pacto de Accionistas ACAFI",
-    "simple": "Permite que ciertas mayorías obliguen a los demás accionistas a vender si aparece una oferta seria por la compañía.",
-    "investor": "Evita que un minoritario bloquee un exit; el modelo ACAFI contempla combinaciones de mayoría ordinaria y preferente, y retornos mínimos en ciertos casos.",
-    "founder": "Puede forzar una venta demasiado temprana o con indemnidades pesadas para fundadores.",
+    "title": "Drag-Along Rights",
+    "aka": "Drag right, forced sale, compulsory sale",
+    "category": "Exit",
+    "stage": "Agreement / Term sheet",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet and Shareholders' Agreement",
+    "simple": "Allows defined majorities to force minority shareholders to join in a company sale to a third-party buyer.",
+    "investor": "Prevents holdout minority shareholders from blocking an exit; ACAFI incorporates combined common/preferred thresholds and minimum returns.",
+    "founder": "Risks forcing a premature sale or imposing heavy liability/indemnification burdens on founders.",
     "negotiation": [
-      "Exigir mayoría conjunta de ordinarias y preferentes o umbrales de retorno, no un drag unilateral fácil.",
-      "Limitar responsabilidad de accionistas arrastrados frente al comprador.",
-      "Prohibir beneficios laterales ocultos para quien activa el drag."
+      "Require combined common and preferred majority thresholds or minimum return multiples before activation.",
+      "Cap representations and indemnification liabilities for dragged minority shareholders.",
+      "Prohibit secret side deals or non-pro-rata benefits for triggering shareholders."
     ],
     "redFlags": [
-      "Drag activable por un inversionista minoritario solo.",
-      "Sin precio mínimo, retorno mínimo ni protección contra conflictos de interés.",
-      "Obligar a fundadores a garantías ilimitadas."
+      "Drag-along triggerable unilaterally by a minority investor.",
+      "Absence of minimum sale price, return floor, or conflict-of-interest safeguards.",
+      "Exposing founders to unlimited personal indemnity liabilities."
     ],
-    "founderPosition": "Aceptar drag vendible pero con mayoría calificada, oferta seria de tercero no relacionado, límites de responsabilidad y sin side deals.",
-    "investorPosition": "Drag claro para evitar holdouts y asegurar que la compañía pueda venderse cuando exista una oferta razonable."
+    "founderPosition": "Accept drag-along subject to supermajority approval, bona fide third-party buyers, liability caps, and zero side benefits.",
+    "investorPosition": "Clear drag-along mechanism to prevent holdouts and guarantee full acquisition delivery upon a fair offer."
   },
   {
     "id": "mfn-derechos-futuros",
-    "title": "Derechos futuros / MFN",
-    "aka": "Mismos términos futuros, most favored nation",
-    "category": "Protección",
-    "stage": "Term sheet / Pacto",
-    "tilt": "Inversionista",
-    "source": "Term Sheet y Pacto de Accionistas ACAFI",
-    "simple": "Si entran nuevos inversionistas en la misma serie o con mejores preferencias, el inversionista existente busca recibir términos equivalentes o participar en esas condiciones.",
-    "investor": "Evita quedar peor que inversionistas que entran después en condiciones comparables.",
-    "founder": "Puede rigidizar rondas futuras si cualquier mejora negociada con un lead se extiende automáticamente a todos.",
+    "title": "Future Rights / Most Favored Nation (MFN)",
+    "aka": "MFN clause, future terms parity",
+    "category": "Protection",
+    "stage": "Term sheet / Agreement",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet and Shareholders' Agreement",
+    "simple": "If future investors enter in the same series under superior terms, existing MFN holders can adopt those improved terms.",
+    "investor": "Protects against being disadvantaged relative to later investors coming in under comparable round terms.",
+    "founder": "Can cause rigidity in future rounds if negotiated lead investor terms automatically spread across all past backers.",
     "negotiation": [
-      "Limitarlo a completar la misma Serie Preferente Seed o instrumentos comparables.",
-      "Excluir rondas institucionales posteriores con nuevos economics o tickets mayores.",
-      "Coordinarlo con pro rata y futuras preferencias."
+      "Scope MFN strictly to the completion of the current Seed Preferred series or equivalent bridge notes.",
+      "Exclude subsequent institutional rounds featuring different check sizes and economic parameters.",
+      "Align with pro-rata rights and future share class preferences."
     ],
     "redFlags": [
-      "MFN perpetuo para cualquier ronda futura.",
-      "No distinguir tickets ni rol de lead investor.",
-      "Obligar a replicar derechos estratégicos o de control a inversionistas pasivos."
+      "Perpetual MFN rights applying to all future financing rounds.",
+      "Failing to differentiate check sizes or lead investor roles.",
+      "Forcing automatic duplication of board seats or control rights to passive check sizes."
     ],
-    "founderPosition": "MFN acotado a la misma ronda o puente, con límite temporal y por instrumento comparable.",
-    "investorPosition": "Recibir mismos términos que nuevos inversionistas de la misma serie o puente si son más favorables."
+    "founderPosition": "Keep MFN tightly restricted to the current round or bridge, with clear expiration dates and instrument scope.",
+    "investorPosition": "Obtain parity terms if more favorable conditions are granted to subsequent holders within the same series."
   },
   {
     "id": "transferencias-permitidas",
-    "title": "Transferencias permitidas y adhesión al pacto",
-    "aka": "Vehículos relacionados, sucesores, formulario de adhesión",
-    "category": "Transferencias",
-    "stage": "Pacto",
-    "tilt": "Compañía",
-    "source": "Pacto de Accionistas ACAFI",
-    "simple": "Permite ciertas transferencias internas o a vehículos controlados, pero exige que el adquirente adhiera al pacto y acepte sus restricciones antes de recibir acciones.",
-    "investor": "Protege la estabilidad de la cap table y evita que accionistas cambien indirectamente de control sin avisar.",
-    "founder": "Permite ordenar patrimonio o vehículos de inversión sin pedir aprobación para cada reorganización razonable.",
+    "title": "Permitted Transfers and Joinder",
+    "aka": "Affiliate transfers, estate planning, joinder agreement",
+    "category": "Transfers",
+    "stage": "Agreement",
+    "tilt": "Company",
+    "source": "ACAFI Shareholders' Agreement",
+    "simple": "Allows transfers to controlled entities or estate vehicles, provided the transferee signs a joinder to the shareholders' agreement.",
+    "investor": "Maintains cap table integrity and prevents indirect shifts in ultimate beneficial ownership without notice.",
+    "founder": "Facilitates personal estate planning and corporate restructuring without requiring formal board consent for every step.",
     "negotiation": [
-      "Autorizar transferencias a sociedades controladas, siempre que mantengan controlador y adhesión al pacto.",
-      "Exigir responsabilidad solidaria del vendedor si transfiere a un vehículo propio.",
-      "Anotar restricciones en títulos o registro de accionistas cuando corresponda."
+      "Authorize transfers to fully controlled entities, provided control is maintained and a joinder is signed.",
+      "Maintain joint liability of the transferring shareholder for obligations of their holding entity.",
+      "Record transfer restrictions directly on share certificates and share registries."
     ],
     "redFlags": [
-      "Transferencia indirecta de control del vehículo sin pasar por restricciones.",
-      "Terceros entrando sin firmar adhesión al pacto.",
-      "Prohibición absoluta que impide planificación patrimonial o fondos."
+      "Indirect transfer of entity ownership bypassing shareholders' agreement restrictions.",
+      "Third parties acquiring equity without executing a formal agreement joinder.",
+      "Total transfer bans prohibiting basic personal tax or estate structuring."
     ],
-    "founderPosition": "Permitir vehículos propios y sociedades relacionadas, con adhesión y control mantenido.",
-    "investorPosition": "Condicionar cualquier transferencia a adhesión, ausencia de competidor y mantenimiento de obligaciones."
+    "founderPosition": "Permit transfers to personal holding companies and affiliates, subject to joinders and maintained control.",
+    "investorPosition": "Condition transfers on joinder execution, absence of competitor involvement, and continued performance guarantees."
   },
   {
     "id": "competidor",
-    "title": "Prohibición de transferir a competidores",
-    "aka": "Competidor, venta bloqueada, cap table limpia",
-    "category": "Transferencias",
-    "stage": "Pacto",
-    "tilt": "Compañía",
-    "source": "Pacto de Accionistas ACAFI",
-    "simple": "Impide vender acciones a una sociedad donde participe directa o indirectamente un competidor, salvo aprobación especial.",
-    "investor": "Evita que información, influencia o derechos políticos terminen en manos de un competidor.",
-    "founder": "Puede complicar liquidez si ‘competidor’ se define demasiado amplio en mercados tecnológicos difusos.",
+    "title": "Restriction on Transfer to Competitors",
+    "aka": "Competitor transfer ban, blocked sale",
+    "category": "Transfers",
+    "stage": "Agreement",
+    "tilt": "Company",
+    "source": "ACAFI Shareholders' Agreement",
+    "simple": "Prohibits selling shares to entities controlled by or affiliated with direct competitors, unless explicitly approved.",
+    "investor": "Prevents trade secrets, governance rights, and strategic insight from falling into competitor hands.",
+    "founder": "Can limit exit liquidity if the term 'competitor' is defined too broadly in rapidly evolving tech markets.",
     "negotiation": [
-      "Definir competidor por negocio propio del proyecto, no por cualquier tecnología parecida.",
-      "Permitir inversiones financieras pasivas de fondos diversificados si no hay control ni acceso competitivo.",
-      "Exigir aprobación de directorio o mayoría calificada para excepciones."
+      "Define competitors narrowly around core business activities rather than adjacent technology sectors.",
+      "Allow passive financial investments by diversified funds without board seats or operational access.",
+      "Require board or supermajority consent to grant exceptions."
     ],
     "redFlags": [
-      "Definición de competidor tan amplia que incluye a todo el mercado.",
-      "Prohibición que alcanza fondos con portafolios amplios sin conflicto real.",
-      "No prever medidas de confidencialidad si el inversionista participa en otras compañías."
+      "Competitor definition so broad it encompasses the entire industry.",
+      "Banning diversified venture funds with broad portfolios absent real operational conflicts.",
+      "Failing to implement confidentiality walls when investors hold adjacent investments."
     ],
-    "founderPosition": "Definir competidor con precisión y permitir excepciones razonables bajo confidencialidad.",
-    "investorPosition": "Bloquear transferencias a competidores directos y exigir resguardos de información."
+    "founderPosition": "Define competitors with precise technical scope and allow reasonable exceptions backed by confidentiality guarantees.",
+    "investorPosition": "Block direct competitor transfers and enforce strict information barriers."
   },
   {
     "id": "no-competencia",
-    "title": "No competencia de fundadores",
-    "aka": "Non-compete, negocio propio del proyecto",
-    "category": "Equipo",
-    "stage": "Pacto",
-    "tilt": "Inversionista",
-    "source": "Pacto de Accionistas ACAFI",
-    "simple": "Prohíbe que los fundadores participen directa o indirectamente en negocios que compitan o perjudiquen el desarrollo normal de la sociedad.",
-    "investor": "Protege la inversión: no quiere financiar a un fundador que después arma o apoya un competidor usando conocimiento de la compañía.",
-    "founder": "Debe evitar quedar bloqueado para trabajar en cualquier cosa parecida o en todo el sector tecnológico.",
+    "title": "Founder Non-Compete",
+    "aka": "Non-compete, core business exclusivity",
+    "category": "Team",
+    "stage": "Agreement",
+    "tilt": "Investor",
+    "source": "ACAFI Shareholders' Agreement",
+    "simple": "Restricts founders from engaging in or supporting businesses that compete with or harm the company.",
+    "investor": "Protects investment value: prevents founders from launching or advising competing ventures using company IP.",
+    "founder": "Must avoid being broadly barred from working in their broader technical field or industry upon departure.",
     "negotiation": [
-      "Acotar por negocio específico, plazo, territorio y rol operativo del fundador.",
-      "El modelo ACAFI contempla vigencia mientras sea fundador/accionista y hasta cierto plazo posterior; conviene revisar proporcionalidad.",
-      "Separar no competencia de no solicitación y confidencialidad."
+      "Scope tightly by specific business activity, duration, geographic territory, and executive role.",
+      "ACAFI models apply during active founder/shareholder tenure plus a reasonable post-exit period.",
+      "Differentiate non-compete commitments from non-solicitation and general non-disclosure duties."
     ],
     "redFlags": [
-      "Prohibición mundial, indefinida o sobre cualquier actividad tecnológica.",
-      "Aplicarla a inversionistas financieros o socios pasivos.",
-      "No distinguir competencia directa de inversión pasiva."
+      "Worldwide, indefinite non-compete terms spanning all technology sub-sectors.",
+      "Applying operational non-competes to passive financial investors.",
+      "Failing to separate direct operational competition from passive investment activities."
     ],
-    "founderPosition": "Aceptar solo competencia directa, con plazo breve, territorio razonable y exclusión para actividades no operativas.",
-    "investorPosition": "No competencia fuerte para fundadores y empleados clave mientras tengan rol o información sensible."
+    "founderPosition": "Limit non-compete strictly to direct competition, short post-exit duration, reasonable geography, and operational roles.",
+    "investorPosition": "Enforce strong non-compete terms for founders and key team members while actively involved or holding sensitive IP."
   },
   {
     "id": "confidencialidad",
-    "title": "Confidencialidad",
-    "aka": "NDA, información confidencial, secreto comercial",
+    "title": "Confidentiality",
+    "aka": "NDA, confidential information, trade secret",
     "category": "Legal",
-    "stage": "NDA / Term sheet / Pacto",
+    "stage": "NDA / Term sheet / Agreement",
     "tilt": "Neutral",
-    "source": "Acuerdo Bilateral de Confidencialidad, MOU, Term Sheet y Pacto ACAFI",
-    "simple": "Protege información técnica, comercial, financiera, bases de datos, negociaciones, know-how, clientes, estrategias y documentos compartidos durante la ronda o colaboración.",
-    "investor": "Necesita revisar información sensible para due diligence, pero también protegerse frente a acusaciones si ve muchas startups del mismo sector.",
-    "founder": "Necesita entregar información sin perder control sobre secretos, tecnología, clientes o estrategia.",
+    "source": "ACAFI Bilateral NDA, MOU, Term Sheet, and Shareholders' Agreement",
+    "simple": "Protects technical, commercial, financial, and strategic information shared during fundraising or commercial collaboration.",
+    "investor": "Needs access to conduct due diligence while protecting against liability when evaluating multiple startups in one space.",
+    "founder": "Must share detailed data without endangering proprietary technology, customer databases, or business strategies.",
     "negotiation": [
-      "Definir Parte Emisora, Parte Receptora, uso permitido y personas autorizadas a acceder.",
-      "Incluir excepciones: información pública, conocida previamente, desarrollada independiente o exigida por autoridad.",
-      "Regular devolución o destrucción de información y plazo de reserva."
+      "Define Disclosing Party, Receiving Party, permitted uses, and authorized representatives.",
+      "Incorporate standard exclusions: public domain, prior knowledge, independent development, or legal compulsion.",
+      "Detail return/destruction of data and explicit survival periods for confidentiality duties."
     ],
     "redFlags": [
-      "NDA que impide al fondo invertir en cualquier competidor sin distinguir uso de información.",
-      "Confidencialidad sin excepciones legales o sin límite temporal.",
-      "No incluir advisors, empleados y dependientes que acceden a la información."
+      "NDAs barring funds from investing in target sectors without evaluating actual information use.",
+      "Confidentiality lacking standard legal carve-outs or reasonable expiration limits.",
+      "Omitting advisors and subcontractors from formal confidentiality coverage."
     ],
-    "founderPosition": "NDA amplio sobre información crítica, con uso limitado a evaluación de la inversión y deber de cuidado sobre equipos/advisors.",
-    "investorPosition": "NDA robusto pero compatible con revisar múltiples compañías; protegerse con cláusula de no restricción de inversiones y Chinese walls si corresponde."
+    "founderPosition": "Broad coverage over critical IP and metrics, clear restrictions on use, and strict duty of care for investor teams.",
+    "investorPosition": "Standard confidentiality aligned with VC deal-flow screening; protect with investment non-restriction clauses."
   },
   {
     "id": "due-diligence",
-    "title": "Due diligence tecnológico",
-    "aka": "DD legal, financiero, comercial y propiedad intelectual",
-    "category": "Cierre",
+    "title": "Tech & Corporate Due Diligence",
+    "aka": "Legal, financial, commercial, and IP due diligence",
+    "category": "Closing",
     "stage": "Due diligence",
-    "tilt": "Inversionista",
-    "source": "Guía de Buenas Prácticas para la Evaluación de la Inversión de Emprendimientos Tecnológicos ACAFI",
-    "simple": "Proceso de revisión posterior al term sheet. En startups tecnológicas, ACAFI enfatiza propiedad intelectual, contratos con colaboradores, aspectos comerciales y contingencias.",
-    "investor": "Busca confirmar que la empresa realmente controla sus activos, contratos, tecnología, marcas, dominios, licencias y contingencias antes de invertir.",
-    "founder": "Debe ordenar antecedentes para no atrasar el cierre ni revelar desorden estructural evitable.",
+    "tilt": "Investor",
+    "source": "ACAFI Evaluation Guidelines for Tech Venture Investments",
+    "simple": "Post-term-sheet review process. For tech startups, ACAFI focuses heavily on IP assignment, team contracts, metrics, and liabilities.",
+    "investor": "Seeks confirmation that the startup owns its assets, contracts, IP, trademarks, domains, and licenses before funding.",
+    "founder": "Must organize documentation early to avoid closing delays or exposing unneeded structural disarray.",
     "negotiation": [
-      "Preparar carpeta con registros y solicitudes de marcas, patentes, dominios, derechos de autor y licencias.",
-      "Revisar contratos de trabajadores, honorarios, proveedores tecnológicos, universidades, centros I+D y clientes.",
-      "Listar juicios, procedimientos, informes legales, restricciones regulatorias y financiamientos públicos/privados."
+      "Prepare a data room with trademark filings, patent applications, domain registrations, and software licenses.",
+      "Review employee, contractor, advisor, vendor, university, and customer contracts.",
+      "Catalog litigation history, regulatory filings, cap table records, and past public/private funding."
     ],
     "redFlags": [
-      "Código o tecnología desarrollada por terceros sin cesión o licencia clara.",
-      "Marca, dominio o software crítico a nombre del fundador y no de la sociedad.",
-      "No tener contratos con freelancers o proveedores que regularicen PI y confidencialidad."
+      "Core code developed by third-party contractors without explicit IP assignment agreements.",
+      "Key trademarks, domains, or IP registered under a founder's personal name rather than the company.",
+      "Unresolved contractor agreements lacking explicit IP transfer and confidentiality clauses."
     ],
-    "founderPosition": "Anticipar el DD con checklist mínimo y disclosure honesto; negociar que temas menores queden como post-cierre.",
-    "investorPosition": "Condicionar cierre a propiedad intelectual crítica, contratos clave, cap table, contingencias y permisos ordenados."
+    "founderPosition": "Pre-screen DD requirements using standard checklists; negotiate minor items as post-closing undertakings.",
+    "investorPosition": "Condition funding closure on verified IP ownership, clean cap table, key contracts, and absence of legal liabilities."
   },
   {
     "id": "propiedad-intelectual",
-    "title": "Propiedad intelectual y tecnología",
-    "aka": "IP assignment, licencias, mejoras, software, marcas, dominios",
+    "title": "Intellectual Property & Technology",
+    "aka": "IP assignment, software licenses, improvements, trademarks",
     "category": "Legal",
-    "stage": "Due diligence / Licencia",
-    "tilt": "Inversionista",
-    "source": "Guía de Buenas Prácticas, Contrato de Licencia y MOU ACAFI",
-    "simple": "Asegura que la sociedad sea titular o tenga derecho suficiente para explotar tecnología, software, marcas, patentes, diseños, dominios, secretos y mejoras.",
-    "investor": "No quiere invertir en una empresa cuyo activo esencial pertenece a un fundador, proveedor, universidad o tercero.",
-    "founder": "Debe ordenar titularidad sin aceptar declaraciones absolutas imposibles sobre todo el stack tecnológico o software de terceros.",
+    "stage": "Due diligence / Licensing",
+    "tilt": "Investor",
+    "source": "ACAFI Evaluation Guidelines, License Agreement, and MOU",
+    "simple": "Ensures full company ownership or valid licensing of software, code, patents, trademarks, domains, trade secrets, and tech updates.",
+    "investor": "Refuses to invest in companies whose core technology belongs to a founder personally, university, or third contractor.",
+    "founder": "Must consolidate company IP title without making impossible absolute representations regarding open-source or third-party code.",
     "negotiation": [
-      "Distinguir activos propios, activos licenciados, mejoras, sublicencias, subcontrataciones y costos de protección en territorios.",
-      "Regular si la licencia es exclusiva o no exclusiva, territorio, plazo, regalías, auditoría y uso de marcas.",
-      "Revisar open source, SaaS, proveedores y desarrolladores externos."
+      "Distinguish proprietary tech, licensed assets, improvements, sublicensing rights, and IP protection expenses.",
+      "Define whether licenses are exclusive or non-exclusive, territorial scope, duration, royalties, and audit rights.",
+      "Audit open-source components, SaaS dependencies, and external developer contributions."
     ],
     "redFlags": [
-      "Licencia experimental vendida como propiedad plena.",
-      "Mejoras sin dueño definido.",
-      "No inscribir o documentar licencias cuando sea relevante."
+      "Experimental university licenses misrepresented as full ownership.",
+      "Unclear ownership terms covering technological improvements and updates.",
+      "Failure to register or legally document critical technology licenses."
     ],
-    "founderPosition": "Regularizar lo crítico y limitar garantías a activos bajo control real de la sociedad.",
-    "investorPosition": "Exigir cesión, licencia exclusiva o derecho suficiente sobre activos esenciales antes de desembolsar."
+    "founderPosition": "Clean up critical IP ownership and limit warranties to assets within the company's direct operational control.",
+    "investorPosition": "Require explicit assignment, exclusive licenses, or verified ownership of core technology before funding."
   },
   {
     "id": "esop",
-    "title": "ESOP / stock options",
-    "aka": "Pool de incentivos, plan de compensación por acciones",
-    "category": "Equipo",
-    "stage": "Pacto / Estatutos",
+    "title": "ESOP / Stock Option Pool",
+    "aka": "Option pool, equity incentive plan",
+    "category": "Team",
+    "stage": "Agreement / Bylaws",
     "tilt": "Neutral",
-    "source": "Principios Filosóficos y Pacto de Accionistas ACAFI",
-    "simple": "Reserva acciones u opciones para fundadores, trabajadores clave y asesores. ACAFI menciona pools habituales entre 10% y 15% y sugiere habilitar más de 10% en estatutos de SpA.",
-    "investor": "Quiere que la empresa pueda atraer talento sin renegociar cada contratación.",
-    "founder": "Debe cuidar si el pool se crea antes o después de la inversión, porque eso cambia quién soporta la dilución.",
+    "source": "ACAFI Philosophical Principles and Shareholders' Agreement",
+    "simple": "Reserves shares or options to recruit and retain key employees, founders, and advisors. ACAFI notes typical pools of 10%–15%.",
+    "investor": "Wants the startup equipped to attract top executive talent without requiring renegotiations for every hire.",
+    "founder": "Must manage whether the pool is created pre-money or post-money, as this dictates who bears the equity dilution.",
     "negotiation": [
-      "Definir tamaño del pool, si se calcula pre-money o post-money y qué dilución produce.",
-      "Aprobar reglas de vesting, good leaver/bad leaver, ejercicio y recompra.",
-      "Separar ESOP real de phantom shares o bonos contractuales si la estructura chilena lo hace más eficiente."
+      "Define pool size, pre-money vs. post-money calculation, and resulting dilution impact across stakeholders.",
+      "Establish vesting schedules, good leaver/bad leaver clauses, exercise prices, and repurchase mechanisms.",
+      "Distinguish statutory shares from phantom equity or contractual bonuses based on local Chilean structure efficiencies."
     ],
     "redFlags": [
-      "Pool grande creado pre-money que diluye solo a fundadores.",
-      "Prometer opciones sin soporte estatutario, tributario o contractual.",
-      "Materias reservadas que bloquean todo plan de incentivos."
+      "Excessively large pre-money option pools that dilute founders exclusively.",
+      "Promising equity options without proper statutory, tax, or legal structuring.",
+      "Broad investor reserved matters that block standard option pool grants."
     ],
-    "founderPosition": "Pool razonable, idealmente compartiendo dilución con inversionistas y con implementación simple.",
-    "investorPosition": "Pool suficiente antes de la ronda para contratar equipo clave sin pedir nuevas autorizaciones constantes."
+    "founderPosition": "Target a realistic pool size, share dilution across all investors post-money, and keep plan execution simple.",
+    "investorPosition": "Require an adequate option pool created prior to round closing to secure key talent without immediate re-dilution."
   },
   {
     "id": "declaraciones-garantias",
-    "title": "Declaraciones y garantías",
-    "aka": "Reps & warranties, contrato de suscripción",
+    "title": "Representations & Warranties",
+    "aka": "Reps & warranties, subscription agreement",
     "category": "Legal",
-    "stage": "Cierre",
-    "tilt": "Inversionista",
-    "source": "Term Sheet, SAFE y Mutuo Convertible ACAFI",
-    "simple": "Son afirmaciones de la sociedad y/o inversionista sobre existencia, facultades, autorizaciones, cumplimiento, ausencia de infracciones y validez de la operación.",
-    "investor": "Le permiten reclamar si la compañía ocultó un problema societario, legal, financiero o contractual relevante.",
-    "founder": "No debe asumir responsabilidad personal ilimitada ni garantizar asuntos fuera de su conocimiento o control.",
+    "stage": "Closing",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet, SAFE, and Convertible Loan",
+    "simple": "Formal statements by the company and founders regarding corporate legal standing, authority, cap table accuracy, and compliance.",
+    "investor": "Provides legal recourse if the startup concealed material legal, financial, tax, or operational liabilities.",
+    "founder": "Must avoid unlimited personal liability or warranting matters outside their knowledge or reasonable control.",
     "negotiation": [
-      "Distinguir garantías de la sociedad, fundadores e inversionista.",
-      "Calificar por conocimiento, materialidad y disclosure entregado.",
-      "Fijar límites de plazo, monto y procedimiento de reclamo."
+      "Differentiate company representations from individual founder and investor representations.",
+      "Qualify statements using knowledge qualifiers, materiality standards, and explicit disclosure schedules.",
+      "Cap monetary exposure, survival duration, and claims procedures."
     ],
     "redFlags": [
-      "Fundadores respondiendo ilimitadamente por todo.",
-      "Garantías absolutas sobre PI, impuestos o contratos no revisados.",
-      "No anexar excepciones o disclosure schedule."
+      "Founders accepting personal, uncapped financial liability for company breaches.",
+      "Absolute warranties covering third-party IP or complex tax positions without knowledge qualifiers.",
+      "Failing to attach a comprehensive disclosure schedule detailing exceptions."
     ],
-    "founderPosition": "Garantías razonables, calificadas y con límite; responsabilidad personal solo por dolo, fraude o incumplimientos propios.",
-    "investorPosition": "Garantías robustas sobre constitución, poderes, cap table, PI, contratos, litigios, deuda, impuestos y cumplimiento."
+    "founderPosition": "Reasonable, knowledge-qualified representations capped in liability; personal founder liability limited to willful misconduct or fraud.",
+    "investorPosition": "Comprehensive warranties covering legal setup, cap table, IP ownership, contracts, litigation, tax, and debt compliance."
   },
   {
     "id": "condiciones-cierre",
-    "title": "Condiciones de cierre",
-    "aka": "CPs, documentos definitivos, suscripción y pago",
-    "category": "Cierre",
-    "stage": "Cierre",
-    "tilt": "Inversionista",
-    "source": "Term Sheet, Mutuo Convertible y Guía de Buenas Prácticas ACAFI",
-    "simple": "Son requisitos que deben cumplirse antes del desembolso o cierre: documentos definitivos, due diligence, actos corporativos, cap table, poderes, reforma estatutaria o contratos clave.",
-    "investor": "Busca no desembolsar hasta que los problemas materiales estén resueltos o debidamente revelados.",
-    "founder": "Quiere que la lista sea objetiva, acotada y no se transforme en excusa para no cerrar.",
+    "title": "Conditions Precedent to Closing",
+    "aka": "CPs, closing conditions, subscription and payment",
+    "category": "Closing",
+    "stage": "Closing",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet, Convertible Loan, and Evaluation Guidelines",
+    "simple": "Mandatory requirements that must be satisfied before funds are disbursed: executed docs, DD completion, corporate authorizations, or bylaws.",
+    "investor": "Ensures capital is not wired until material legal, corporate, or operational issues are resolved or formally disclosed.",
+    "founder": "Wants objective, concise conditions that prevent investors from delaying closing unexpectedly.",
     "negotiation": [
-      "Dividir condiciones previas críticas y obligaciones post-cierre.",
-      "Usar plazos, responsables y documentos concretos.",
-      "Evitar fórmulas abiertas como ‘a satisfacción del inversionista’ sin estándar objetivo."
+      "Separate critical pre-closing conditions precedent from minor post-closing obligations.",
+      "Set firm deadlines, designated responsible parties, and explicit required deliverables.",
+      "Avoid subjective closing conditions like 'to the investor's sole satisfaction' without objective criteria."
     ],
     "redFlags": [
-      "CPs imposibles antes del cierre.",
-      "Due diligence ilimitado sin plazo.",
-      "No regular qué pasa si una condición no se cumple por causa menor."
+      "Impractical pre-closing conditions precedent that halt deal momentum.",
+      "Unbounded due diligence review periods lacking hard end dates.",
+      "Unclear remedies if a minor condition precedent fails due to immaterial administrative delays."
     ],
-    "founderPosition": "CPs pocas y materiales; asuntos menores como post-cierre con plazo razonable.",
-    "investorPosition": "Condicionar a orden societario, PI crítica, cap table, poderes, pacto, suscripción y ausencia de contingencias materiales."
+    "founderPosition": "Keep conditions precedent few, objective, and material; relegate minor requirements to post-closing undertakings with fair timelines.",
+    "investorPosition": "Condition funding on corporate clean-up, IP assignment, cap table accuracy, board approvals, and signed definitive agreements."
   },
   {
     "id": "exclusividad",
-    "title": "Exclusividad / no shop",
-    "aka": "No negociar con otros, 60 días, cierre expedito",
-    "category": "Cierre",
+    "title": "Exclusivity / No-Shop",
+    "aka": "No-shop clause, 60-day exclusivity, deal lock-up",
+    "category": "Closing",
     "stage": "Term sheet",
-    "tilt": "Inversionista",
-    "source": "Term Sheet ACAFI",
-    "simple": "Durante un plazo, la sociedad y emprendedores se obligan a no promover ni negociar ofertas alternativas de inversión, venta, licencia o enajenación relevante.",
-    "investor": "Protege su esfuerzo de due diligence y documentación: no quiere que otro use su trabajo para quedarse con la ronda.",
-    "founder": "Puede quedar atrapado si el inversionista no avanza, especialmente si necesita caja urgente.",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet",
+    "simple": "Bars the company and founders from negotiating or soliciting competing investment or acquisition offers for a defined period.",
+    "investor": "Protects their due diligence time and legal expenditures against founders using their offer to shop for a higher valuation.",
+    "founder": "Risks being stranded if the investor stalls progress, particularly when runway is short.",
     "negotiation": [
-      "El modelo ACAFI usa 60 días como referencia; ajustar según complejidad y urgencia de caja.",
-      "Condicionar exclusividad a hitos de avance del inversionista.",
-      "Excluir conversaciones existentes o financiamiento no equivalente si es necesario."
+      "ACAFI uses 60 days as a standard benchmark; adjust based on transaction complexity and cash urgency.",
+      "Condition ongoing exclusivity on investor meeting specific due diligence and drafting milestones.",
+      "Carve out existing operational debt financing or non-equity strategic conversations if required."
     ],
     "redFlags": [
-      "Exclusividad larga sin obligación de cerrar ni calendario.",
-      "Prohibición que bloquea financiamiento operativo de emergencia.",
-      "No notificar ofertas de terceros cuando se pactó hacerlo."
+      "Long exclusivity periods lacking diligence progress obligations or closing timelines.",
+      "Restrictions so rigid they block emergency working capital debt facilities.",
+      "Failing to require prompt notice if unsolicited third-party approaches occur."
     ],
-    "founderPosition": "Exclusividad breve, con hitos y derecho de salida si el inversionista no avanza.",
-    "investorPosition": "Exclusividad suficiente para DD y documentos, más deber de notificar acercamientos de terceros."
+    "founderPosition": "Short exclusivity period tied to clear investor diligence milestones, with termination rights if diligence stalls.",
+    "investorPosition": "Sufficient exclusivity duration to finalize due diligence and legal drafting, plus mandatory disclosure of competing approaches."
   },
   {
     "id": "reconocimiento-vc",
-    "title": "Reconocimiento del negocio VC",
-    "aka": "El fondo puede ver e invertir en competidores",
+    "title": "Venture Capital Business Recognition",
+    "aka": "VC freedom to invest in sector competitors",
     "category": "Legal",
-    "stage": "Term sheet / Pacto",
-    "tilt": "Inversionista",
-    "source": "Term Sheet y Pacto de Accionistas ACAFI",
-    "simple": "Reconoce que el fondo revisa muchas compañías y puede participar en empresas con productos o servicios que compitan directa o indirectamente con la sociedad.",
-    "investor": "Evita que la startup use el pacto para impedirle invertir en otros proyectos del portafolio o del mercado.",
-    "founder": "Necesita que esa libertad no permita usar información confidencial de la compañía contra ella.",
+    "stage": "Term sheet / Agreement",
+    "tilt": "Investor",
+    "source": "ACAFI Term Sheet and Shareholders' Agreement",
+    "simple": "Acknowledges that venture funds review numerous startups and may invest in entities that compete directly or indirectly with the startup.",
+    "investor": "Prevents startups from using shareholders' agreement restrictions to block the fund from investing in adjacent portfolio startups.",
+    "founder": "Needs assurance that investment freedom does not permit the misuse of the startup's proprietary confidential data.",
     "negotiation": [
-      "Mantener libertad de inversión del fondo, pero con protección estricta de información confidencial.",
-      "Regular conflictos de interés si el inversionista tiene director u observador.",
-      "Distinguir conocimiento general de mercado versus secretos, datos y planes concretos de la sociedad."
+      "Maintain investor investment flexibility while enforcing strict confidentiality protections.",
+      "Implement formal recusal procedures if board directors or observers face direct portfolio conflicts.",
+      "Differentiate general industry know-how from proprietary company secrets, metrics, and technical IP."
     ],
     "redFlags": [
-      "Cláusula que permite al fondo usar información sin restricciones.",
-      "Fundador intentando prohibir al fondo invertir en todo el sector.",
-      "Director/observador de fondo competidor sin protocolo de confidencialidad."
+      "Clauses granting funds permission to utilize confidential company data without restriction.",
+      "Founders attempting to block venture funds from investing across the broader industry sector.",
+      "Conflicted board members or observers participating without strict confidentiality walls."
     ],
-    "founderPosition": "Aceptar la lógica VC, pero exigir resguardos de información, conflictos y abstención si corresponde.",
-    "investorPosition": "Mantener libertad de inversión y revisión de oportunidades, sin restricción amplia de competencia."
+    "founderPosition": "Acknowledge VC investment models, but enforce strict information firewalls and conflict recusal requirements.",
+    "investorPosition": "Preserve freedom to evaluate and invest across sector opportunities without broad non-compete restrictions."
   },
   {
     "id": "prevalencia-pacto",
-    "title": "Prevalencia pacto / estatutos",
-    "aka": "Consistencia entre pacto, estatutos y registro de accionistas",
+    "title": "Prevalence of Agreement over Bylaws",
+    "aka": "Consistency between agreement, bylaws, and registry",
     "category": "Legal",
-    "stage": "Pacto / Estatutos",
+    "stage": "Agreement / Bylaws",
     "tilt": "Neutral",
-    "source": "Pacto de Accionistas ACAFI",
-    "simple": "Busca que, si hay divergencias entre pacto y estatutos, las partes voten y actúen para ajustar los estatutos y cumplir el pacto entre ellas.",
-    "investor": "Quiere que las obligaciones pactadas sean operativas y no queden contradichas por estatutos antiguos.",
-    "founder": "Debe cuidar que no se prometa contractualmente algo que requiere reforma estatutaria, junta o inscripción y que no pueda ejecutarse de inmediato.",
+    "source": "ACAFI Shareholders' Agreement",
+    "simple": "Establishes that if conflicts arise between the shareholders' agreement and company bylaws, parties will vote to amend bylaws accordingly.",
+    "investor": "Ensures negotiated contractual rights remain enforceable and are not defeated by outdated company bylaws.",
+    "founder": "Must ensure contractual commitments do not promise corporate actions that violate statutory laws or mandatory shareholder approval steps.",
     "negotiation": [
-      "Identificar qué derechos deben estar en estatutos: preferencias, series, directorio, aumentos, derechos preferentes.",
-      "Depositar o anotar el pacto cuando corresponda conforme al régimen societario aplicable.",
-      "Evitar documentos paralelos contradictorios."
+      "Identify rights requiring formal statutory inclusion: share preferences, board election mechanics, and capital increases.",
+      "Annotate or file the shareholders' agreement with the company share registry as required under corporate law.",
+      "Eliminate contradictory provisions between historical corporate documents and the new agreement."
     ],
     "redFlags": [
-      "Pacto promete una preferencia que los estatutos no reconocen.",
-      "Cap table distinta entre pacto, registro y documentos de suscripción.",
-      "Nuevos accionistas sin adhesión al pacto."
+      "Shareholders' agreement grants share preferences that bylaws fail to recognize legally.",
+      "Cap table discrepancies across shareholders' agreement, share registry, and subscription forms.",
+      "Incoming equity holders taking shares without executing agreement joinders."
     ],
-    "founderPosition": "Ordenar estatutos y pacto por etapas, sin sobrecargar una ronda chica con reformas innecesarias.",
-    "investorPosition": "Exigir consistencia documental y compromisos de voto para ajustar estatutos cuando sea necesario."
+    "founderPosition": "Align bylaws and agreements systematically by stage, avoiding over-complicating small rounds with costly statutory overhauls.",
+    "investorPosition": "Require strict document consistency and binding voting commitments to align statutory bylaws with agreement terms."
   },
   {
     "id": "arbitraje",
-    "title": "Arbitraje y ley aplicable",
-    "aka": "CAM Santiago, árbitro mixto, jurisdicción chilena",
+    "title": "Arbitration & Governing Law",
+    "aka": "CAM Santiago, mixed arbitration, Chilean jurisdiction",
     "category": "Legal",
-    "stage": "Pacto / SAFE / KISS / Mutuo",
+    "stage": "Agreement / SAFE / KISS / Loan",
     "tilt": "Neutral",
-    "source": "Pacto, SAFE y KISS ACAFI",
-    "simple": "Define cómo se resolverán disputas. Los modelos ACAFI suelen someter controversias a arbitraje CAM Santiago y ley chilena.",
-    "investor": "Prefiere un foro especializado, confidencial y más eficiente que tribunales ordinarios para conflictos societarios complejos.",
-    "founder": "Debe revisar costos, sede, idioma y si el arbitraje es proporcional al tamaño de la inversión.",
+    "source": "ACAFI Agreement, SAFE, and KISS Models",
+    "simple": "Defines how legal disputes will be resolved. ACAFI models default to CAM Santiago arbitration under Chilean law.",
+    "investor": "Prefers specialized, confidential arbitration over public court proceedings for complex shareholder disputes.",
+    "founder": "Must evaluate arbitration venue costs, procedural rules, and financial proportionality relative to check size.",
     "negotiation": [
-      "Definir centro arbitral, tipo de árbitro, reglas, sede y ley aplicable.",
-      "Evitar renuncias procesales excesivas sin entender consecuencias.",
-      "Para tickets pequeños, evaluar si el costo arbitral es razonable."
+      "Specify arbitration institution, arbitrator selection rules, seat, language, and governing law.",
+      "Avoid excessive procedural waivers without understanding practical litigation impacts.",
+      "Ensure arbitration costs remain realistic for early-stage check sizes."
     ],
     "redFlags": [
-      "Foro extranjero caro para una startup chilena sin caja.",
-      "Cláusula arbitral inconsistente entre documentos.",
-      "No regular medidas urgentes o cautelares."
+      "Expensive foreign arbitration forums mandated for an early-stage local startup.",
+      "Inconsistent dispute resolution clauses across transaction documents.",
+      "Failing to provide mechanisms for emergency injunctive relief."
     ],
-    "founderPosition": "Arbitraje local y proporcional; reglas claras y costos razonables.",
-    "investorPosition": "Arbitraje CAM o foro especializado, con ley chilena y ejecutabilidad clara."
+    "founderPosition": "Local, cost-effective arbitration mechanisms with clear rules and proportionate legal fee structures.",
+    "investorPosition": "CAM Santiago or recognized specialized arbitration panel, governed by Chilean law with clear enforceability."
   },
   {
     "id": "pay-to-play",
-    "title": "Pay to play",
-    "aka": "Invierte en la siguiente ronda o pierdes privilegios",
-    "category": "Protección",
-    "stage": "Complementario",
-    "tilt": "Fundador",
-    "source": "Complemento de práctica VC; no aparece como cláusula central en los modelos ACAFI revisados",
-    "simple": "Obliga a ciertos inversionistas a seguir participando en futuras rondas si quieren mantener preferencias. No es el foco de los modelos ACAFI, pero conversa con la lógica de rondas sucesivas.",
-    "investor": "Puede verlo como una carga: si no tiene follow-on, pierde derechos económicos o políticos.",
-    "founder": "Sirve para evitar inversionistas pasivos que bloquean rondas, exigen preferencias y no acompañan cuando la compañía necesita caja.",
+    "title": "Pay-to-Play",
+    "aka": "Participate in future rounds or lose preferences",
+    "category": "Protection",
+    "stage": "Complementary",
+    "tilt": "Founder",
+    "source": "VC Practice Complement; not central in main reviewed ACAFI templates",
+    "simple": "Requires existing investors to participate pro-rata in future down-rounds or risk losing preferred rights or converting to common stock.",
+    "investor": "Can view it as an unwanted burden if they lack reserves for follow-on funding, risking loss of economic/governance rights.",
+    "founder": "Useful tool to prevent passive investors from retaining preferred vetos while refusing to support company capital needs.",
     "negotiation": [
-      "Usarlo solo en rondas donde el compromiso de follow-on sea realmente importante.",
-      "Definir consecuencias proporcionales: perder pro rata, convertir preferentes a ordinarias o perder ciertos vetos.",
-      "Distinguir inversionistas pequeños de lead investors o fondos con capacidad de follow-on."
+      "Apply primarily in financing rounds where follow-on capital commitments are essential.",
+      "Define proportional penalties: loss of pro-rata rights, conversion of preferred shares to common, or forfeiture of vetos.",
+      "Distinguish angel investors lacking follow-on reserves from institutional VC funds."
     ],
     "redFlags": [
-      "Castigos automáticos desproporcionados.",
-      "Exigir tickets futuros imposibles de anticipar.",
-      "Aplicarlo a inversionistas ángeles pequeños como si fueran fondos institucionales."
+      "Disproportionate automatic penalties for non-participation.",
+      "Unrealistic follow-on check commitments required without advance notice.",
+      "Applying harsh pay-to-play terms to minor early angels lacking fund reserves."
     ],
-    "founderPosition": "Incluirlo como mecanismo de alineación solo si hay rondas futuras críticas y riesgo de bloqueo.",
-    "investorPosition": "Aceptar solo con umbrales claros, consecuencias acotadas y excepciones razonables."
+    "founderPosition": "Incorporate as an alignment mechanism if future funding rounds face investor deadlock risks.",
+    "investorPosition": "Accept only with clear activation rules, capped penalties, and fair investor exclusions."
   }
 ]
   </script>
@@ -1467,8 +1468,8 @@
 
     const state = {
       query: "",
-      category: "Todas",
-      tilt: "Todos",
+      category: "All",
+      tilt: "All",
       expanded: new Set(["principios-vc"])
     };
 
@@ -1484,22 +1485,22 @@
       downloadJson: document.getElementById("downloadJson")
     };
 
-    const tiltLabels = ["Todos", "Fundador", "Inversionista", "Neutral", "Minoría", "Compañía"];
-    const categories = ["Todas", ...Array.from(new Set(clauses.map(c => c.category)))];
+    const tiltLabels = ["All", "Founder", "Investor", "Neutral", "Minority", "Company"];
+    const categories = ["All", ...Array.from(new Set(clauses.map(c => c.category)))];
 
     const icons = {
-      "Estructura": "▣",
-      "Economía": "$",
-      "Conversión": "↻",
-      "Protección": "🛡",
-      "Equipo": "👥",
-      "Salida": "↔",
-      "Transferencias": "⇄",
-      "Gobierno": "⚖",
+      "Structure": "▣",
+      "Economics": "$",
+      "Conversion": "↻",
+      "Protection": "🛡",
+      "Team": "👥",
+      "Exit": "↔",
+      "Transfers": "⇄",
+      "Governance": "⚖",
       "Legal": "§",
-      "Cierre": "✓",
-      "Mutuo": "₽",
-      "Principios": "★"
+      "Closing": "✓",
+      "Loan": "₽",
+      "Principles": "★"
     };
 
     function normalize(value) {
@@ -1510,12 +1511,12 @@
     }
 
     function tiltClass(tilt) {
-      return "tilt-" + normalize(tilt)
-        .replace("inversionista", "inversionista")
-        .replace("fundador", "fundador")
-        .replace("neutral", "neutral")
-        .replace("minoria", "minoria")
-        .replace("compania", "compania");
+      const norm = normalize(tilt);
+      if (norm.includes("inversionista") || norm.includes("investor")) return "tilt-investor";
+      if (norm.includes("fundador") || norm.includes("founder")) return "tilt-founder";
+      if (norm.includes("minoria") || norm.includes("minority")) return "tilt-minority";
+      if (norm.includes("compania") || norm.includes("company")) return "tilt-company";
+      return "tilt-neutral";
     }
 
     function escapeHtml(value) {
@@ -1574,8 +1575,8 @@
         ].join(" "));
 
         const matchesQuery = !q || haystack.includes(q);
-        const matchesCategory = state.category === "Todas" || c.category === state.category;
-        const matchesTilt = state.tilt === "Todos" || c.tilt === state.tilt;
+        const matchesCategory = state.category === "All" || c.category === state.category;
+        const matchesTilt = state.tilt === "All" || c.tilt === state.tilt;
 
         return matchesQuery && matchesCategory && matchesTilt;
       });
@@ -1596,7 +1597,7 @@
               <div class="main">
                 <div class="title-row">
                   <h3>${escapeHtml(c.title)}</h3>
-                  <span class="badge ${tiltClass(c.tilt)}">Favorece: ${escapeHtml(c.tilt)}</span>
+                  <span class="badge ${tiltClass(c.tilt)}">Favors: ${escapeHtml(c.tilt)}</span>
                 </div>
                 <p class="aka">${escapeHtml(c.aka)}</p>
                 <p class="simple">${escapeHtml(c.simple)}</p>
@@ -1604,7 +1605,7 @@
                   <span>${escapeHtml(c.category)}</span>
                   <span>${escapeHtml(c.stage)}</span>
                 </div>
-                <div class="source-note">Base: ${escapeHtml(c.source || "Documentos ACAFI")}</div>
+                <div class="source-note">Source: ${escapeHtml(c.source || "ACAFI Documents")}</div>
               </div>
               <div class="chevron">⌄</div>
             </div>
@@ -1614,32 +1615,32 @@
             <div class="body-stack">
               <div class="two">
                 <div class="box investor">
-                  <span class="box-title">Lectura pro inversionista</span>
+                  <span class="box-title">Pro-Investor Reading</span>
                   <p>${escapeHtml(c.investor)}</p>
                 </div>
                 <div class="box founder">
-                  <span class="box-title">Lectura pro fundador</span>
+                  <span class="box-title">Pro-Founder Reading</span>
                   <p>${escapeHtml(c.founder)}</p>
                 </div>
               </div>
 
               <div class="box outline">
-                <span class="box-title">Cómo negociarla</span>
+                <span class="box-title">How to Negotiate It</span>
                 ${list(c.negotiation || [])}
               </div>
 
               <div class="box danger">
-                <span class="box-title">Red flags</span>
+                <span class="box-title">Red Flags</span>
                 ${list(c.redFlags || [])}
               </div>
 
               <div class="two">
                 <div class="box outline">
-                  <span class="box-title">Posición sugerida fundador</span>
+                  <span class="box-title">Suggested Founder Position</span>
                   <p>${escapeHtml(c.founderPosition)}</p>
                 </div>
                 <div class="box outline">
-                  <span class="box-title">Posición sugerida inversionista</span>
+                  <span class="box-title">Suggested Investor Position</span>
                   <p>${escapeHtml(c.investorPosition)}</p>
                 </div>
               </div>
@@ -1682,10 +1683,10 @@
       const allOpen = items.every(item => state.expanded.has(item.id));
       if (allOpen) {
         items.forEach(item => state.expanded.delete(item.id));
-        els.expandAll.textContent = "Abrir todo";
+        els.expandAll.textContent = "Expand all";
       } else {
         items.forEach(item => state.expanded.add(item.id));
-        els.expandAll.textContent = "Cerrar todo";
+        els.expandAll.textContent = "Collapse all";
       }
       renderCards(items);
     });
@@ -1695,7 +1696,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "clausulas-startup-acafi-data.json";
+      a.download = "acafi-startup-clauses-data.json";
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -1706,3 +1707,5 @@
   </script>
 </body>
 </html>
+
+```
